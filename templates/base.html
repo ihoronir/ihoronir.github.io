@@ -4,17 +4,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MyBlog</title>
+  <link rel="stylesheet" href="/style.css">
+  {% block head %}
+  <title>Welcome to my website!</title>
+  {% endblock %}
 </head>
 
 <body>
   <header>
-    <h1>Logo</h1>
+    <h1><a href="/">ihoronir.github.io</a></h1>
     <nav>
       <ul>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
-        <li><a href="#">link</a></li>
+        <li><a href="/entries/">List of entries</a></li>
+        <li><a href="/documents/">List of documents</a></li>
+        <li><a href="/works/">List of works</a></li>
       </ul>
     </nav>
   </header>
@@ -24,7 +27,13 @@
   </aside>
 
   <main>
-    {% block content %} {% endblock %}
+    {% block main %}
+    <h1 class="title">
+      {{ page.title }}
+    </h1>
+    <p class="subtitle"><strong>{{ page.date }}</strong></p>
+    {{ page.content | safe }}
+    {% endblock %}
   </main>
 
   <aside>

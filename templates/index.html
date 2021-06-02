@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block main %}
 <h1 class="title">
-  Hello! My name is ihoronir.
+  Welcome to my website!
 </h1>
-{% endblock content %}
+<ul>
+  {% for page in section.pages %}
+  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+  {% endfor %}
+</ul>
+{% endblock main %}
