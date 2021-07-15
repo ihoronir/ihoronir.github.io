@@ -1,16 +1,23 @@
 {% extends "base.html" %}
+{% block title %}{{ section.title }}{% endblock %}
 
-{% block head %}
-<title>{{ section.title }} | ihoronir.github.io</title>
-{% endblock head %}
+{% block header_title %}{{ section.title }}{% endblock %}
+
+{% block breadcrumb %}現在地：トップ >{% endblock %}
 
 {% block main %}
-<h1 class="title">
-  {{ section.title }}
-</h1>
-<ul>
-  {% for page in section.pages %}
-  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
-  {% endfor %}
-</ul>
+<aside id="main-toc">
+    <h2>目次</h2>
+</aside>
+<article id="main-article">
+    <ul>
+	{% for page in section.pages %}
+	<li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+	{% endfor %}
+    </ul>
+</article>
+
+
+
+
 {% endblock main %}

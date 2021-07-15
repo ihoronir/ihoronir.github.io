@@ -1,49 +1,63 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style.css">
-  {% block head %}
-  <title>Welcome to my website!</title>
-  {% endblock %}
-</head>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/style.css">
 
-<body>
+	<title>{% block title %}タイトルが設定されていません{% endblock %} -  ihoronir.github.io</title>
 
-  <header>
-    <h1><a href="/">ihoronir.github.io</a></h1>
-    <nav>
-      <ul>
-        <li><a href="/entries/">List of entries</a></li>
-        <li><a href="/documents/">List of documents</a></li>
-        <li><a href="/works/">List of works</a></li>
-      </ul>
-    </nav>
-  </header>
+    </head>
 
-  <aside>
-    Advertisement
-  </aside>
+    <body>
 
-  <main>
-    {% block main %}
-    <h1 class="title">
-      {{ page.title }}
-    </h1>
-    <p class="subtitle"><strong>{{ page.date }}</strong></p>
-    {{ page.content | safe }}
-    {% endblock %}
-  </main>
+	<header id="header">
+	    <h1 id="header-logo"><a id="header-logo-link" href="/">ihoronir.<br>github.io</a></h1>
+	    <nav id="header-nav">
+		<ul id="header-nav-list">
+		    <li class="header-nav-link"><a href="/entries/">ブログ記事</a></li>
+		    <li class="header-nav-link"><a href="#">準備中</a></li>
+		    <li class="header-nav-link"><a href="#">準備中</a></li>
+		    <li class="header-nav-link"><a href="#">準備中</a></li>
+		    <li class="header-nav-link"><a href="#">準備中</a></li>
+		    <li class="header-nav-link"><a href="#">準備中</a></li>
+		    <!--
+			<li class="header-nav-link"><a href="/documents/">ドキュメント</a></li>
+			<li class="header-nav-link"><a href="/works/">作品</a></li>
+			<li class="header-nav-link"><a href="/profile/">自己紹介</a></li>
+			<li class="header-nav-link"><a href="/about/">このサイト</a></li>
+			<li class="header-nav-link"><a href="#">その他</a></li>
+		    -->
+		</ul>
+	    </nav>
+	</header>
 
-  <aside>
-    Advertisement
-  </aside>
+	<main id="main">
+	    <header id="main-header">
+		<p id="main-header-breadcrumb">
+		{% block breadcrumb %}パンくずリストの取得に失敗しました{% endblock %}
+		</p>
+		<h1 id="main-header-title">
+		    {% block header_title %}タイトルが設定されていません{% endblock %} 
+		</h1>
+		<p id="main-header-date">
+		このページの公開日:<br>
+		このページの最終編集日:<br>
+		このページのURL:
+		</p>
+	    </header>
+	    {% block main %}{% endblock %}
+	</main>
 
-  <footer>
-    Footer
-  </footer>
-</body>
+	<aside id="side">
+	    この部分<br>
+	    関連リンクを<br>
+	    置く予定。<br>
+	    (575)
+	</aside>
+
+	<footer id="footer"><small>Copyrights © Ihoronir All Rights Reserved.</small></footer>
+    </body>
 
 </html>

@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
+
+{% block title %}トップページ{% endblock %}
+
+{% block header_title %}{{ section.title }}{% endblock %}
+
+{% block breadcrumb %}Welcome to ihoronir.github.io!{% endblock %}
+
 {% block main %}
-<h1 class="title">
-  Welcome to my website!
-</h1>
-<ul>
-  {% for page in section.pages %}
-  <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
-  {% endfor %}
-</ul>
+  <article>
+  {{ section.content | safe }}
+  </article>
 {% endblock main %}
