@@ -6,229 +6,35 @@ html {
 
 body {
     // font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
-  display: grid;
-  margin: 0 auto;
-  max-width: 1440px;
-  grid-template-columns: 300px 1fr;
-  grid-template-rows: 300px auto 100px;
-}
-
-// * {
-//     border: 1px white solid;
-// }
-
-#header, #side, #main, #footer {
-}
-
-#header {
-    grid-column: 1 / 2;	
-    grid-row: 1 / 2;
-    background-color: #111111;
     color: white;
-}
-
-#header a {
-    display: block;
-    color: white;
-    text-decoration: none;
-}
-
-#header h1 {
-    text-align: center;
-    line-height: 40px;
-    border-bottom: #202020 3px solid;
-}
-
-#header h1 a {
-    padding: 51.5px 0;
-}
-
-#header ul {
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    list-style: none;
-    background-color: #171717;
-    grid-row-gap: 3px;
-    grid-column-gap: 3px;
-}
-
-#header li {
-    text-align: center;
-    line-height: 36px;
-    background-color: #111111;
-}
-
-#header ul a {
-}
-
-#header ul a:hover {
-    background-color: yellow;
-    color: black;
-}
-
-#side {
-    grid-column: 1 / 2;	
-    grid-row: 2 / 4;
-    background-color: #373737;
-    color: white;
-    padding: 16px;
-}
-
-#main {
-    display: grid;
-    grid-template-rows: 300px 100vh auto;
-    grid-template-columns: 1fr 350px;
-    grid-row-gap: 32px;
-    background-color: #090909;
-    color: white;
-    grid-column: 2 / 3;
-    grid-row:  1 / 3;
-}
-
-#main-header {
-    grid-row: 1 / 2;
-    grid-column: 1 / 3;
-    height: 300px;
-    padding: 12px 50px;
-    background-color: #373737;
-    color: white;
-}
-
-#main-header-title {
-    font-size: 40px;
-}
-
-#main-header-breadcrumb, #main-header-date {
-    line-height: 37px;
-}
-
-#main-header-title {
-    height: 137px;
-    line-height: 50px;
-    border-bottom: #585858 3px solid;
-}
-
-#footer {
-    grid-column: 2 / 3;
-    grid-row: 3 / 4;
-    color: white;
-    background-color: #181818;
-    text-align: center;
-    line-height: 100px;
-}
-
-#main-toc {
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-top: 18px;
-    border-left: #373737 3px solid;
-    position: sticky;
-    top: 0;
-    grid-row: 2 / 3;
-    grid-column: 2 / 3;
-
-    a {
-	color: white;
-    }
-}
-
-#main-article {
-    padding: 18px 38px 0 38px;
-    grid-row: 2 / 4;
-    grid-column: 1 / 2;
-
-    color: #eeeeee;
-    font-size: 16px;
+    max-width: 1140px;
+    min-height: 100vh;
     line-height: 1.5;
-
-    overflow: hidden;
-
-    blockquote,
-    ol,
-    p,
-    pre,
-    table,
-    ul {
-	margin-bottom: 24px;
-    }
-
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-	margin-top: 70px;
-	margin-bottom: 16px;
-	line-height: 1.25;
-    }
-    h1,
-    h2 {
-	padding-bottom: .3em;
-	padding-left: .2em;
-	border-bottom: 3px solid #787877;
-    }
-
-    :first-child {
-	margin-top: 0
-    }
-    a {
-	color: #00b0ff ;
-	text-decoration: none;
-    }
-    a:hover {
-	text-decoration: underline;
-    }
-
-    h1 {
-	font-size: 32px;
-    }
-    h2 {
-	font-size: 24px;
-    }
-    h3 {
-	font-size: 20px;
-    }
-    h4 {
-	font-size: 16px;
-    }
-    h5 {
-	font-size: 14px;
-    }
-    h6 {
-	font-size: 12px;
-    }
-
-    code,
-    pre {
-	font-family: monospace;
-    }
-
-    code {
-	background-color: #383838;
-	padding: 0 4px;
-    }
-
-    pre {
-	overflow: auto;
-	padding: 6px 8px;
-
-	code {
-	    padding: 0;
-	}
-    }
-
-    blockquote {
-	padding: 8px 16px;
-	border-left: .25em solid #787878;
-    }
-    blockquote *:first-child {
-	margin-top: 0;
-    }
-    blockquote *:last-child {
-	margin-bottom: 0;
-    }
+    margin: 0 auto;
 }
 
+@import "_header.scss";
+@import "_footer.scss";
+
+@import "_main_entry.scss";
+
+@media screen and (min-width: 1280px) {
+    body {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-template-rows: max-content 100px;
+	max-width: 1580px;
+    }
+    #header {
+	grid-column: 1 / 2;	
+	grid-row: 1 / 2;
+    }
+    #main {
+	grid-column: 2 / 3;
+	grid-row: 1 / 2;
+    }
+    #footer {
+	grid-column: 1 / 3;
+	grid-row: 2 / 3;
+    }
+}

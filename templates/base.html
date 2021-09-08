@@ -1,63 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
 
-    <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="/style.css">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="/style.css">
+		<title>{% block title %}タイトルが設定されていません{% endblock %} - ihoronir.github.io</title>
+	</head>
 
-	<title>{% block title %}タイトルが設定されていません{% endblock %} -  ihoronir.github.io</title>
+	<body>
 
-    </head>
+		<header id="header">
+			<h1 id="header-logo"><a id="header-logo-link" href="/">ihoronir.<br id="header-logo-break">github.io</a></h1>
+			{#
+			<ul id="header-social">
+				<li class="header-social-li"><a class="header-social-link" href="/entries/">Twitter</a></li>
+				<li class="header-social-li"><a class="header-social-link" href="#">YouTube</a></li>
+				<li class="header-social-li"><a class="header-social-link" href="#">RSS Feed</a></li>
+			</ul>
+			#}
+			<nav id="header-nav">
+				<ul id="header-nav-ul">
+					<li class="header-nav-li" id="header-nav-li_top"><a style="//background-color: royalblue;" id="header-nav-link_top" class="header-nav-link" href="/">トップページ</a></li>
+					<li class="header-nav-li" id="header-nav-li_entry"><a style="//background-color: darkblue;" id="header-nav-link_entry" class="header-nav-link header-nav-link_highlight" href="/entries/">ブログ記事</a></li>
+					<li class="header-nav-li" id="header-nav-li_develop"><a style="//background-color: darkolivegreen;" id="header-nav-link_develop" class="header-nav-link" href="#">開発</a></li>
+					<li class="header-nav-li" id="header-nav-li_music"><a style="//background-color: goldenrod;" id="header-nav-link_music" class="header-nav-link" href="#">音楽</a></li>
+					<li class="header-nav-li" id="header-nav-li_game"><a style="//background-color: goldenrod;" id="header-nav-link_game" class="header-nav-link" href="#">ゲーム</a></li>
+					<li class="header-nav-li" id="header-nav-li_photo"><a style="//background-color: goldenrod;" id="header-nav-link_photo" class="header-nav-link" href="#">写真</a></li>
+					<li class="header-nav-li" id="header-nav-li_profile"><a style="//background-color: firebrick;" id="header-nav-link_profile" class="header-nav-link" href="#">自己紹介</a></li>
+					<li class="header-nav-li" id="header-nav-li_about"><a style="//background-color: hotpink;" id="header-nav-link_about" class="header-nav-link" href="#">このサイトについて</a></li>
+				</ul>
+			</nav>
+		</header>
 
-    <body>
+		{% block main %}{% endblock %}
 
-	<header id="header">
-	    <h1 id="header-logo"><a id="header-logo-link" href="/">ihoronir.<br>github.io</a></h1>
-	    <nav id="header-nav">
-		<ul id="header-nav-list">
-		    <li class="header-nav-link"><a href="/entries/">ブログ記事</a></li>
-		    <li class="header-nav-link"><a href="#">準備中</a></li>
-		    <li class="header-nav-link"><a href="#">準備中</a></li>
-		    <li class="header-nav-link"><a href="#">準備中</a></li>
-		    <li class="header-nav-link"><a href="#">準備中</a></li>
-		    <li class="header-nav-link"><a href="#">準備中</a></li>
-		    <!--
-			<li class="header-nav-link"><a href="/documents/">ドキュメント</a></li>
-			<li class="header-nav-link"><a href="/works/">作品</a></li>
-			<li class="header-nav-link"><a href="/profile/">自己紹介</a></li>
-			<li class="header-nav-link"><a href="/about/">このサイト</a></li>
-			<li class="header-nav-link"><a href="#">その他</a></li>
-		    -->
-		</ul>
-	    </nav>
-	</header>
-
-	<main id="main">
-	    <header id="main-header">
-		<p id="main-header-breadcrumb">
-		{% block breadcrumb %}パンくずリストの取得に失敗しました{% endblock %}
-		</p>
-		<h1 id="main-header-title">
-		    {% block header_title %}タイトルが設定されていません{% endblock %} 
-		</h1>
-		<p id="main-header-date">
-		このページの公開日:<br>
-		このページの最終編集日:<br>
-		このページのURL:
-		</p>
-	    </header>
-	    {% block main %}{% endblock %}
-	</main>
-
-	<aside id="side">
-	    この部分<br>
-	    関連リンクを<br>
-	    置く予定。<br>
-	    (575)
-	</aside>
-
-	<footer id="footer"><small>Copyrights © Ihoronir All Rights Reserved.</small></footer>
-    </body>
+		<footer id="footer"><small>Copyrights © Ihoronir All Rights Reserved.</small></footer>
+	</body>
 
 </html>

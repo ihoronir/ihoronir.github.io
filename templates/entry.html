@@ -2,31 +2,64 @@
 
 {% block title %}{{ page.title }}{% endblock %}
 
-{% block header_title %}{{ page.title }}{% endblock %}
-
-{% block breadcrumb %}現在地：トップ > ブログ記事 >{% endblock %}
-
 {% block main %}
-<aside id="main-toc">
-  <h2>目次</h2>
-  <ul>
-  {% for h1 in page.toc %}
-    <li>
-      <a href="{{h1.permalink | safe}}">{{ h1.title }}</a>
-      {% if h1.children %}
-      <ul>
-      {% for h2 in h1.children %}
-        <li>
-          <a href="{{h2.permalink | safe}}">{{ h2.title }}</a>
-        </li>
-      {% endfor %}
-      </ul>
-      {% endif %}
-    </li>
-  {% endfor %}
-  </ul>
-</aside>
-<article id="main-article">
-  {{ page.content | safe }}
-</article>
+<main id="main_entry">
+	<header id="main_entry-header">
+		<nav id="main_entry-header-breadcrumb">現在地：トップ > ブログ記事 ></nav>
+		<h1 id="main_entry-header-title">{{ page.title }}</h1>
+		<p id="main_entry-header-meta">
+		この記事の公開日：{{page.date}}<br>
+		この記事の最終編集日：{{page.updated}}<br>
+		この記事のURL：{{page.permalink}}
+		</p>
+	</header>
+	<aside id="main_entry-ref">
+		{#
+		<nav id="main_entry-ref-lists">
+			<h2 id="main_entry-ref-lists-header">関連記事リスト</h2>
+			<details id="main_entry-ref-list">
+				<summary id="main_entry-ref-list-title" style="font-weight: bold;">ArchLinux 2021 (2)</summary>
+				<ul id="main_entry-ref-list-ul">
+					<li class="main_entry-ref-list-li"><a class="main_entry-ref-list-link" href="#">voanwoia vwnarbvn;abn naioer</a></li>
+					<li class="main_entry-ref-list-li"><a class="main_entry-ref-list-link" href="#">voanwoia vwnarbvn;abn naioer</a></li>
+				</ul>
+			</details>
+		</nav>
+		#}
+		<nav id="main_entry-ref-toc">
+			<h2 id="main_entry-ref-toc-header">目次</h2>
+			<ul id="main_entry-ref-toc-ul1">
+				{% for h1 in page.toc %}
+				<li class="main_entry-ref-toc-li1">
+					<a class="main_entry-ref-toc-link" href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+					{% if h1.children %}
+					<ul class="main_entry-ref-toc-ul2">
+						{% for h2 in h1.children %}
+						<li class="main_entry-ref-toc-li2">
+							<a class="main_entry-ref-toc-link" href="{{h2.permalink | safe}}">{{ h2.title }}</a>
+						</li>
+						{% endfor %}
+					</ul>
+					{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</nav>
+	</aside>
+	<article id="main_entry-article">
+		{{ page.content | safe }}
+	</article>
+	{#
+	<div id="main_entry-prevnext">
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+		Dummy Text<br>
+	</div>
+	#}
+</main>
 {% endblock main %}

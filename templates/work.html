@@ -6,4 +6,7 @@
 </h1>
 <p class="subtitle"><strong>{{ page.date }}</strong></p>
 {{ page.content | safe }}
+		<script>
+			console.log({{ page | json_encode(pretty=true) | safe }});
+		</script>
 {% endblock main %}
