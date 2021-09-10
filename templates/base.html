@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,35 +7,39 @@
 		<link rel="stylesheet" href="/style.css">
 		<title>{% block title %}タイトルが設定されていません{% endblock %} - ihoronir.github.io</title>
 	</head>
-
 	<body>
-
 		<header id="header">
-			<h1 id="header-logo"><a id="header-logo-link" href="/">ihoronir.<br id="header-logo-break">github.io</a></h1>
-			{#
-			<ul id="header-social">
-				<li class="header-social-li"><a class="header-social-link" href="/entries/">Twitter</a></li>
-				<li class="header-social-li"><a class="header-social-link" href="#">YouTube</a></li>
-				<li class="header-social-li"><a class="header-social-link" href="#">RSS Feed</a></li>
-			</ul>
-			#}
-			<nav id="header-nav">
-				<ul id="header-nav-ul">
-					<li class="header-nav-li" id="header-nav-li_top"><a style="//background-color: royalblue;" id="header-nav-link_top" class="header-nav-link" href="/">トップページ</a></li>
-					<li class="header-nav-li" id="header-nav-li_entry"><a style="//background-color: darkblue;" id="header-nav-link_entry" class="header-nav-link header-nav-link_highlight" href="/entries/">ブログ記事</a></li>
-					<li class="header-nav-li" id="header-nav-li_develop"><a style="//background-color: darkolivegreen;" id="header-nav-link_develop" class="header-nav-link" href="#">開発</a></li>
-					<li class="header-nav-li" id="header-nav-li_music"><a style="//background-color: goldenrod;" id="header-nav-link_music" class="header-nav-link" href="#">音楽</a></li>
-					<li class="header-nav-li" id="header-nav-li_game"><a style="//background-color: goldenrod;" id="header-nav-link_game" class="header-nav-link" href="#">ゲーム</a></li>
-					<li class="header-nav-li" id="header-nav-li_photo"><a style="//background-color: goldenrod;" id="header-nav-link_photo" class="header-nav-link" href="#">写真</a></li>
-					<li class="header-nav-li" id="header-nav-li_profile"><a style="//background-color: firebrick;" id="header-nav-link_profile" class="header-nav-link" href="#">自己紹介</a></li>
-					<li class="header-nav-li" id="header-nav-li_about"><a style="//background-color: hotpink;" id="header-nav-link_about" class="header-nav-link" href="#">このサイトについて</a></li>
+			<h1 id="header_logo"><a id="header_logo_link" href="/">ihoronir.<br id="header_logo_break">github.io</a></h1>
+			<nav id="header_nav">
+				<ul id="header_nav_list">
+					<li id="header_nav_list_top">
+						<a style="//backround_color: royalblue;" id="header_nav_list_top_link" href="/">トップページ</a>
+					</li>
+					<li id="header_nav_list_entry">
+						<a style="//background_color: darkblue;" id="header_nav_list_entry_link-now" href="/entries/">ブログ記事</a>
+					</li>
+					<li id="header_nav_list_develop">
+						<a style="//backgrouor: darkolivegreen;" id="header_nav_list_develop_link" href="/develop/">開発</a>
+					</li>
+					<li id="header_nav_list_music">
+						<a style="//backgrond_color: goldenrod;" id="header_nav_list_music_link" href="/music/">音楽</a>
+					</li>
+					<li id="header_nav_list_game">
+						<a style="//backgrund_color: goldenrod;" id="header_nav_list_game_link" href="/games/">ゲーム</a>
+					</li>
+					<li id="header_nav_list_photo">
+						<a style="//backgound_color: goldenrod;" id="header_nav_list_photo_link" href="/photos/">写真</a>
+					</li>
+					<li id="header_nav_list_profile">
+						<a style="//backround_color: firebrick;" id="header_nav_list_profile_link" href="/profile/">自己紹介</a>
+					</li>
+					<li id="header_nav_list_about">
+						<a style="//back ground_color: hotpink;" id="header_nav_list_about_link" href="/about/">このサイトについて</a>
+					</li>
 				</ul>
 			</nav>
 		</header>
-
 		{% block main %}{% endblock %}
-
 		<footer id="footer"><small>Copyrights © Ihoronir All Rights Reserved.</small></footer>
 	</body>
-
 </html>

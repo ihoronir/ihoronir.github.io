@@ -3,40 +3,55 @@
 {% block title %}{{ page.title }}{% endblock %}
 
 {% block main %}
-<main id="main_entry">
-	<header id="main_entry-header">
-		<nav id="main_entry-header-breadcrumb">現在地：トップ > ブログ記事 ></nav>
-		<h1 id="main_entry-header-title">{{ page.title }}</h1>
-		<p id="main_entry-header-meta">
+<main id="entry">
+	<header id="entry_header">
+		<nav id="entry_header_breadcrumb">現在地：トップ > ブログ記事 ></nav>
+		<h1 id="entry_header_title">{{ page.title }}</h1>
+		<p id="entry_header_meta">
 		この記事の公開日：{{page.date}}<br>
 		この記事の最終編集日：{{page.updated}}<br>
 		この記事のURL：{{page.permalink}}
 		</p>
 	</header>
-	<aside id="main_entry-ref">
-		{#
-		<nav id="main_entry-ref-lists">
-			<h2 id="main_entry-ref-lists-header">関連記事リスト</h2>
-			<details id="main_entry-ref-list">
-				<summary id="main_entry-ref-list-title" style="font-weight: bold;">ArchLinux 2021 (2)</summary>
-				<ul id="main_entry-ref-list-ul">
-					<li class="main_entry-ref-list-li"><a class="main_entry-ref-list-link" href="#">voanwoia vwnarbvn;abn naioer</a></li>
-					<li class="main_entry-ref-list-li"><a class="main_entry-ref-list-link" href="#">voanwoia vwnarbvn;abn naioer</a></li>
+	<aside id="entry_ref">
+		<section id="entry_ref_lists">
+			<h2 id="entry_ref_lists_header">関連記事リスト</h2>
+			{# loop #}
+			<details class="entry_ref_lists_list">
+				<summary class="entry_ref_lists_list_title">ArchLinux 2021 (2)</summary>
+				<ul class="entry_ref_lists_list_list">
+					<li class="entry_ref_lists_list_list_item">
+						<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
+					</li>
+					<li class="entry_ref_lists_list_list_item">
+						<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
+					</li>
 				</ul>
 			</details>
-		</nav>
-		#}
-		<nav id="main_entry-ref-toc">
-			<h2 id="main_entry-ref-toc-header">目次</h2>
-			<ul id="main_entry-ref-toc-ul1">
+			<details class="entry_ref_lists_list">
+				<summary class="entry_ref_lists_list_title">ArchLinux 2021 (2)</summary>
+				<ul class="entry_ref_lists_list_list">
+					<li class="entry_ref_lists_list_list_item">
+						<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
+					</li>
+					<li class="entry_ref_lists_list_list_item">
+						<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
+					</li>
+				</ul>
+			</details>
+			{# /loop #}
+		</section>
+		<section id="entry_ref_toc">
+			<h2 id="entry_ref_toc_header">目次</h2>
+			<ul id="entry_ref_toc_list">
 				{% for h1 in page.toc %}
-				<li class="main_entry-ref-toc-li1">
-					<a class="main_entry-ref-toc-link" href="{{h1.permalink | safe}}">{{ h1.title }}</a>
+				<li class="entry_ref_toc_list_item">
+					<a class="entry_ref_toc_list_item_link" href="{{h1.permalink | safe}}">{{ h1.title }}</a>
 					{% if h1.children %}
-					<ul class="main_entry-ref-toc-ul2">
+					<ul class="entry_ref_toc_list_item_list">
 						{% for h2 in h1.children %}
-						<li class="main_entry-ref-toc-li2">
-							<a class="main_entry-ref-toc-link" href="{{h2.permalink | safe}}">{{ h2.title }}</a>
+						<li class="entry_ref_toc_list_item_list_item">
+							<a class="entry_ref_toc_list_item_list_item_link" href="{{h2.permalink | safe}}">{{ h2.title }}</a>
 						</li>
 						{% endfor %}
 					</ul>
@@ -44,13 +59,13 @@
 				</li>
 				{% endfor %}
 			</ul>
-		</nav>
+		</section>
 	</aside>
-	<article id="main_entry-article">
+	<article id="entry_article">
 		{{ page.content | safe }}
 	</article>
 	{#
-	<div id="main_entry-prevnext">
+	<div id="entry_prevnext">
 		Dummy Text<br>
 		Dummy Text<br>
 		Dummy Text<br>
