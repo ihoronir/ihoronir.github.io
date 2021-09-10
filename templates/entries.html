@@ -1,19 +1,10 @@
 {% extends "base.html" %}
 {% block title %}{{ section.title }}{% endblock %}
 
-{% block header_title %}{{ section.title }}{% endblock %}
-
-{% block breadcrumb %}現在地：トップ >{% endblock %}
-
 {% block main %}
-<aside id="main-toc">
-    <h2>目次</h2>
-</aside>
-<article id="main-article">
-    <ul>
+<ul>
 	{% for page in section.pages %}
 	<li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
 	{% endfor %}
-    </ul>
-</article>
+</ul>
 {% endblock main %}

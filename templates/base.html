@@ -8,38 +8,38 @@
 		<title>{% block title %}タイトルが設定されていません{% endblock %} - ihoronir.github.io</title>
 	</head>
 	<body>
-		<header id="header">
-			<h1 id="header_logo"><a id="header_logo_link" href="/">ihoronir.<br id="header_logo_break">github.io</a></h1>
-			<nav id="header_nav">
-				<ul id="header_nav_list">
-					<li id="header_nav_list_top">
-						<a style="//backround_color: royalblue;" id="header_nav_list_top_link" href="/">トップページ</a>
+		<header class="header">
+			<h1 class="header_logo"><a class="header_logo_link" href="/">ihoronir.<br class="header_logo_break">github.io</a></h1>
+			<nav class="header_nav">
+				<ul class="header_nav_list">
+					<li class="header_nav_list_Item header_nav_list_top">
+						<a class="header_nav_list_Item_link header_nav_list_top_link" href="/">トップページ</a>
 					</li>
-					<li id="header_nav_list_entry">
-						<a style="//background_color: darkblue;" id="header_nav_list_entry_link-now" href="/entries/">ブログ記事</a>
+					<li class="header_nav_list_Item header_nav_list_entry">
+						<a class="header_nav_list_Item_link header_nav_list_entry_link header_nav_list_entry_link-now" href="/entries/">ブログ記事</a>
 					</li>
-					<li id="header_nav_list_develop">
-						<a style="//backgrouor: darkolivegreen;" id="header_nav_list_develop_link" href="/develop/">開発</a>
+					<li class="header_nav_list_Item header_nav_list_develop">
+						<a class="header_nav_list_Item_link header_nav_list_develop_link" href="/develop/">開発</a>
 					</li>
-					<li id="header_nav_list_music">
-						<a style="//backgrond_color: goldenrod;" id="header_nav_list_music_link" href="/music/">音楽</a>
+					<li class="header_nav_list_Item header_nav_list_music">
+						<a class="header_nav_list_Item_link header_nav_list_music_link" href="/music/">音楽</a>
 					</li>
-					<li id="header_nav_list_game">
-						<a style="//backgrund_color: goldenrod;" id="header_nav_list_game_link" href="/games/">ゲーム</a>
+					<li class="header_nav_list_Item header_nav_list_game">
+						<a class="header_nav_list_Item_link header_nav_list_game_link" href="/games/">ゲーム</a>
 					</li>
-					<li id="header_nav_list_photo">
-						<a style="//backgound_color: goldenrod;" id="header_nav_list_photo_link" href="/photos/">写真</a>
+					<li class="header_nav_list_Item header_nav_list_photo">
+						<a class="header_nav_list_Item_link header_nav_list_photo_link" href="/photos/">写真</a>
 					</li>
-					<li id="header_nav_list_profile">
-						<a style="//backround_color: firebrick;" id="header_nav_list_profile_link" href="/profile/">自己紹介</a>
+					<li class="header_nav_list_Item header_nav_list_profile">
+						<a class="header_nav_list_Item_link header_nav_list_profile_link" href="/profile/">自己紹介</a>
 					</li>
-					<li id="header_nav_list_about">
-						<a style="//back ground_color: hotpink;" id="header_nav_list_about_link" href="/about/">このサイトについて</a>
+					<li class="header_nav_list_Item header_nav_list_about">
+						<a class="header_nav_list_Item_link header_nav_list_about_link" href="/about/">このサイトについて</a>
 					</li>
 				</ul>
 			</nav>
 		</header>
 		{% block main %}{% endblock %}
-		<footer id="footer"><small>Copyrights © Ihoronir All Rights Reserved.</small></footer>
+		<footer class="footer"><small class="footer_copyrights">Copyrights © Ihoronir All Rights Reserved.</small></footer>
 	</body>
 </html>

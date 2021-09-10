@@ -3,12 +3,8 @@
 
 {% block title %}トップページ{% endblock %}
 
-{% block header_title %}{{ section.title }}{% endblock %}
-
-{% block breadcrumb %}Welcome to ihoronir.github.io!{% endblock %}
-
 {% block main %}
-  <article>
-  {{ section.content | safe }}
-  </article>
+<main>
+	{{ section.content | safe }}
+</main>
 {% endblock main %}
