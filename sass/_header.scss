@@ -1,8 +1,8 @@
 .header {
-    background-color: #171717;
+	background-color: #171717;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1536px) {
 	.header {
 		grid-column: 1 / 2;	
 		grid-row: 1 / 2;
@@ -14,7 +14,7 @@
 .header_logo {
 	margin: 0;
 	background-color: #111111;
-	background-image: linear-gradient(to left, rgba(30, 180, 180, 0.5), rgba(0, 0, 0, 0.5)), url("https://pbs.twimg.com/profile_images/1430566872034922498/53K6n2Vz_400x400.jpg");
+	background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url("https://pbs.twimg.com/profile_images/1430566872034922498/53K6n2Vz_400x400.jpg");
 	background-size: cover;
 	line-height: 100px;
 	text-align: center;
@@ -25,13 +25,14 @@
 	display: block;
 	color: white;
 	text-decoration: none;
+	backdrop-filter: grayscale(100%) blur(2px);
 }
 
 .header_logo_break {
 	display: none;
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1536px) {
 	.header_logo {
 		line-height: 40px;
 	}
@@ -87,14 +88,14 @@
 	text-decoration: none;
 }
 
-.header_nav_list_top_link    , .header_nav_list_top_link-now     { &:hover { background: linear-gradient(to right, royalblue, blue)}}
-.header_nav_list_entry_link  , .header_nav_list_entry_link-now   { &:hover { background: linear-gradient(to right, darkblue, blue)}}
-.header_nav_list_develop_link, .header_nav_list_develop_link-now { &:hover { background: linear-gradient(to right, darkolivegreen, blue)}}
-.header_nav_list_game_link   , .header_nav_list_game_link-now    { &:hover { background: linear-gradient(to right, goldenrod, blue)}}
-.header_nav_list_music_link  , .header_nav_list_music_link-now   { &:hover { background: linear-gradient(to right, firebrick, blue)}}
-.header_nav_list_photo_link  , .header_nav_list_photo_link-now   { &:hover { background: linear-gradient(to right, hotpink, blue)}}
-.header_nav_list_profile_link, .header_nav_list_profile_link-now { &:hover { background: linear-gradient(to right, darkblue, blue)}}
-.header_nav_list_about_link  , .header_nav_list_about_link-now   { &:hover { background: linear-gradient(to right, darkblue, blue)}}
+.header_nav_list_top_link:hover    , .header_nav_list_top_link-now     { & { background: linear-gradient(145deg, #ff4500, #ff0000)}}
+.header_nav_list_entry_link:hover  , .header_nav_list_entry_link-now   { & { background: linear-gradient(145deg, #0044ff, #0000ff)}}
+.header_nav_list_game_link:hover   , .header_nav_list_game_link-now    { & { background: linear-gradient(145deg, #00ff62, #00a2ff); color: #121212;}}
+.header_nav_list_develop_link:hover, .header_nav_list_develop_link-now { & { background: linear-gradient(145deg, #00a708, #016e25)}}
+.header_nav_list_music_link:hover  , .header_nav_list_music_link-now   { & { background: linear-gradient(145deg, #ffa600, #ff7300); color: #181818;}}
+.header_nav_list_photo_link:hover  , .header_nav_list_photo_link-now   { & { background: linear-gradient(145deg, magenta, #8000ff)}}
+.header_nav_list_profile_link:hover, .header_nav_list_profile_link-now { & { background: linear-gradient(145deg, #fffec1, #dd8041); color: #121212;}}
+.header_nav_list_about_link:hover  , .header_nav_list_about_link-now   { & { background: linear-gradient(145deg, #ff00c8, #ff0062)}}
 
 @media screen and (min-width: 760px) {
 	.header_nav_list {
@@ -108,7 +109,7 @@
 	}
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1536px) {
 	.header_nav {
 		padding: 30px 0;
 		position: sticky;

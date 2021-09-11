@@ -1,8 +1,15 @@
 base_url = "https://ihoronir.github.io"
 
+title = "ihoronir.github.io"
+description = "Ihoronir's website"
+
+default_language = "ja"
+
 compile_sass = true
 
 minify_html = false
+
+generate_feed = true
 
 taxonomies = [
     {name = "entry_lists", feed = true},
@@ -12,5 +19,10 @@ taxonomies = [
 [markdown]
 highlight_code = true
 highlight_theme = "kronuz"
+
+[slugify]
+paths = "off"
+taxonomies = "off"
+anchors = "off"
 
 [extra]
