@@ -8,31 +8,6 @@ entry_lists = ["このサイトについて"]
 +++
 これまでずっと Linux のブートローダーとしては GRUB 使っていたのですが、どうやら systemd-boot が便利らしかったので使ってみました。
 
-```html
-<details class="entry_ref_lists_list">
-	<summary class="entry_ref_lists_list_title">ArchLinux 2021 (2)</summary>
-	<ul class="entry_ref_lists_list_list">
-		<li class="entry_ref_lists_list_list_item">
-			<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-		</li>
-		<li class="entry_ref_lists_list_list_item">
-			<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-		</li>
-	</ul>
-</details>
-```
-
-<details class="entry_ref_lists_list">
-	<summary class="entry_ref_lists_list_title">ArchLinux 2021 (2)</summary>
-	<ul class="entry_ref_lists_list_list">
-		<li class="entry_ref_lists_list_list_item">
-			<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-		</li>
-		<li class="entry_ref_lists_list_list_item">
-			<a class="entry_ref_lists_list_list_item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-		</li>
-	</ul>
-</details>
 
 ## systemd-boot とは
 
@@ -46,20 +21,34 @@ EFI パーティションに systemd-boot をインストールするには、 b
 > systemd-boot は systemd に同梱されているので、 ArchLinux では追加でパッケージをインストールする必要はありません。
 > EFI パーティションに systemd-boot をインストールするには、 bootctl コマンド使用します。
 
-> systemd-boot は systemd に同梱されているので、 ArchLinux では追加でパッケージをインストールする必要はありません。
-> > systemd-boot は systemd に同梱されているので、 ArchLinux では追加でパッケージをインストールする必要はありません。
-> > systemd-boot は systemd に同梱されているので、 ArchLinux では追加でパッケージをインストールする必要はありません。
-> > systemd-boot は systemd に同梱されているので、 ArchLinux では追加でパッケージをインストールする必要はありません。
-> > EFI パーティションに systemd-boot をインストールするには、 bootctl コマンド使用します。
-> > EFI パーティションに systemd-boot をインストールするには、 bootctl コマンド使用します。
-> > EFI パーティションに systemd-boot をインストールするには、 bootctl コマンド使用します。
-> EFI パーティションに systemd-boot をインストールするには、 bootctl コマンド使用します。
 ```bash
 $ sudo bootctl --path=/boot install
 ```
 
 `--path` パラメーターには EFI パーティションのマウントポイントを指定します。適宜置き換えてください。（この記事内では今後 /boot とします）
 これで、 systemd-boot 関連のファイルが EFI パーティション内に展開されます。
+
+```html
+<details class="entry_ref_lists_list">
+	<summary class="entry_ref_lists_list_title">ArchLinux 2021 (2)</summary>
+	<ul class="entry_ref_lists_list_list">
+		<li class="entry_ref_lists_list_list_item">
+			<a class="entry_ref_lists_list_list_item_link" href="#">
+				voanwoia vwnarbvn;abn naioer
+			</a>
+		</li>
+		<li class="entry_ref_lists_list_list_item">
+			<a class="entry_ref_lists_list_list_item_link" href="#">
+				voanwoia vwnarbvn;abn naioer
+			</a>
+		</li>
+	</ul>
+</details>
+```
+
+## This is a Picture
+
+画像をご覧ください
 
 ## ローダーの設定
 
@@ -95,7 +84,7 @@ editor no
 
 Windows とデュアルブートしたい場合でも、 systemd-boot が自動で EFI パーティション内の Windows の EFI 実行可能ファイルを発見してブートメニューに表示するので特に追加の設定は必要ありません。
 
-設定は以上で終わりです。これで systemd-boot が使えるようになります。やったー！
+設定は以上で終わりです。これで systemd-boot が使えるようになります。
 
 ## systemd-boot のアップデート
 
