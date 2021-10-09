@@ -1,10 +1,23 @@
-{% extends "base.html" %}
-
+{% import "_base_macros.html" as base_macros %}
+{% extends "_base.html" %}
 
 {% block title %}トップページ{% endblock %}
 
+{% block header %}{{ base_macros::base_header(now="top") }}{% endblock %}
+
 {% block main %}
-<main>
-	{{ section.content | safe }}
+<main class="base_main index">
+	<header class="index_header">
+		<nav class="index_header_breadcrumb">現在地：トップ > ブログ記事 ></nav>
+		<h1 class="index_header_title">Welcome to ihoronir.github.io!</h1>
+		<p class="index_header_meta">
+		Hello, World.<br>
+		Hello, World.<br>
+		Hello, World.
+		</p>
+	</header>
+	<article class="index_article">
+		{{- section.content | safe}}
+	</article>
 </main>
 {% endblock main %}

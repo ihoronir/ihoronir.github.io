@@ -4,7 +4,7 @@ updated = "2021-08-31"
 slug = "ddd"
 
 [taxonomies]
-entry_lists = ["このサイトについて"]
+entry-lists = ["このサイトについて"]
 +++
 これまでずっと Linux のブートローダーとしては GRUB 使っていたのですが、どうやら systemd-boot が便利らしかったので使ってみました。
 

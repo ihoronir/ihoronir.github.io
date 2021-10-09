@@ -1,4 +1,4 @@
-.footer {
+.base_footer {
 	color: white;
 	background-color: #272727;
 	text-align: center;
@@ -6,7 +6,7 @@
 }
 
 @media screen and (min-width: 1536px) {
-	.footer {
+	.base_footer {
 		grid-column: 1 / 3;
 		grid-row: 2 / 3;
 	}

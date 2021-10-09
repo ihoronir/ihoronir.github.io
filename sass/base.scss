@@ -7,7 +7,7 @@ body {
 	color: white;
 	max-width: 886px;
 	min-height: 100vh;
-	line-height: 1.9;
+	line-height: 1.8;
 	margin: 0 auto;
 }
 
@@ -26,8 +26,18 @@ body {
 	}
 }
 
-@import "_header.scss";
-@import "_footer.scss";
+@import "_base_header.scss";
 
-@import "_entry.scss";
+.base_main {
+	background-color: #090909;
+}
+
+@media screen and (min-width: 1536px) {
+	.base_main {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
+}
+
+@import "_base_footer.scss";
 

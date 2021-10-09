@@ -1,9 +1,14 @@
-{% extends "base.html" %}
+{% import "_base_macros.html" as base_macros %}
+{% extends "_base.html" %}
+
+{% block style %}<link rel="stylesheet" href="/entry.css">{% endblock %}
 
 {% block title %}{{ page.title }}{% endblock %}
 
+{% block header %}{{ base_macros::base_header(now="entry") }}{% endblock %}
+
 {% block main %}
-<main class="entry">
+<main class="base_main entry">
 	<header class="entry_header">
 		<nav class="entry_header_breadcrumb">現在地：トップ > ブログ記事 ></nav>
 		<h1 class="entry_header_title">{{ page.title }}</h1>
