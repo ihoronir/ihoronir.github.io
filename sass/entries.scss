@@ -1,0 +1,28 @@
+.entries_header {
+	padding: 12px;
+		background: #171717;
+
+	nav {
+		line-height: 37px;
+		margin: 0 38px;
+	border-bottom: /*#585858*/ #aaaaaa 3px solid;
+	}
+
+	h1 {
+		margin: 0;
+		text-align: center;
+		padding: 68px 38px 108px;
+		font-size: 50px;
+		line-height: 60px;
+	}
+}
+
+.entries_Article {
+	background: linear-gradient(145deg, #0044ff, #0000ff);
+	margin: 38px;
+	padding: 12px;
+	a {
+		color: white;
+		text-decoration: none;
+	}
+}

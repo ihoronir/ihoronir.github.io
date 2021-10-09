@@ -13,12 +13,13 @@
 		<nav class="entry_header_breadcrumb">現在地：トップ > ブログ記事 ></nav>
 		<h1 class="entry_header_title">{{ page.title }}</h1>
 		<p class="entry_header_meta">
-		この記事の公開日：{{page.date}}<br>
-		この記事の最終編集日：{{page.updated}}<br>
-		この記事のURL：{{page.permalink}}
+		この記事の公開日：{{page.date | safe}}<br>
+		この記事の最終編集日：{{page.updated | safe}}<br>
+		この記事のURL：{{page.permalink | safe}}
 		</p>
 	</header>
 	<aside class="entry_ref">
+		<!--
 		<section class="entry_ref_lists">
 			<h2 class="entry_ref_Section_header">関連記事リスト</h2>
 			{# loop #}
@@ -46,6 +47,7 @@
 			</details>
 			{# /loop #}
 		</section>
+		-->
 		<section class="entry_ref_toc">
 			<h2 class="entry_ref_Section_header">目次</h2>
 			<ul class="entry_ref_toc_list">
