@@ -17,6 +17,15 @@
 	line-height: 37px;
 }
 
+
+.entry_header_breadcrumb_Link {
+	color: white;
+	text-decoration: none;
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
 .entry_header_title {
 	font-size: 40px;
 	margin: 0;

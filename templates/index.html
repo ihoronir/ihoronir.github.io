@@ -1,17 +1,17 @@
-{% import "_base_macros.html" as base_macros %}
 {% extends "_base.html" %}
 
-{% block style %}<link rel="stylesheet" href="/top.css">{% endblock %}
+{% block base_config %}
+{% set base_config_now = "top" %}
+{% set base_config_title = "トップページ" %}
+{% set base_config_stylesheets = ["/top.css"] %}
+{% endblock base_config %}
 
-{% block title %}トップページ{% endblock %}
-
-{% block header %}{{ base_macros::base_header(now="top") }}{% endblock %}
-
-{% block main %}
+{% block base_main %}
 <main class="base_main top">
 	<h1 class="top_header">Welcome to ihoronir.github.io!</h1>
 	<article class="top_article">
 		{{- section.content | safe}}
 	</article>
 </main>
-{% endblock main %}
+{% endblock base_main %}
+

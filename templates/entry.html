@@ -1,20 +1,19 @@
-{% import "_base_macros.html" as base_macros %}
 {% extends "_base.html" %}
 
-{% block style %}<link rel="stylesheet" href="/entry.css">{% endblock %}
+{% block base_config %}
+{% set base_config_now = "entry" %}
+{% set base_config_title = page.title %}
+{% set base_config_stylesheets = ["/entry.css"] %}
+{% endblock base_config %}
 
-{% block title %}{{ page.title }}{% endblock %}
-
-{% block header %}{{ base_macros::base_header(now="entry") }}{% endblock %}
-
-{% block main %}
+{% block base_main %}
 <main class="base_main entry">
 	<header class="entry_header">
-		<nav class="entry_header_breadcrumb">現在地：トップ > ブログ記事 ></nav>
+		<nav class="entry_header_breadcrumb">現在地：<a class="entry_header_breadcrumb_Link" href="/">トップ</a> > <a class="entry_header_breadcrumb_Link" href="/entries/">ブログ記事</a> ></nav>
 		<h1 class="entry_header_title">{{ page.title }}</h1>
 		<p class="entry_header_meta">
 		この記事の公開日：{{page.date | safe}}<br>
-		この記事の最終編集日：{{page.updated | safe}}<br>
+		この記事の最終編集日：{{page.updated | default(value = page.date) | safe}}<br>
 		この記事のURL：{{page.permalink | safe}}
 		</p>
 	</header>
@@ -84,4 +83,4 @@
 	</div>
 	#}
 </main>
-{% endblock main %}
+{% endblock base_main %}

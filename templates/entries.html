@@ -1,22 +1,22 @@
-{% import "_base_macros.html" as base_macros %}
 {% extends "_base.html" %}
 
-{% block style %}<link rel="stylesheet" href="/entries.css">{% endblock %}
+{% block base_config %}
+{% set base_config_now = "entry" %}
+{% set base_config_title = section.title %}
+{% set base_config_stylesheets = ["/entries.css"] %}
+{% endblock base_config %}
 
-{% block title %}{{ section.title }}{% endblock %}
-
-{% block header %}{{ base_macros::base_header(now="entry") }}{% endblock %}
-
-{% block main %}
+{% block base_main %}
 <main class="base_main entries">
 	<header class="entries_header">
-		<nav class="entries_header_breadcrumb">現在地：トップ ></nav>
-		<h1 class="entries_header_title">ブログ記事一覧</h1>
+		<nav class="entries_header_breadcrumb">現在地：<a class="entries_header_breadcrumb_Link" href="/">トップ</a> > </nav>
+		<h1 class="entries_header_title"><span>ブログ記事一覧</span></h1>
 	</header>
 	{% for page in section.pages %}
 	<article class="entries_Article">
-		<h1><a href="{{ page.permalink | safe }}">{{ page.title }}</a></h1>
+		<h1><a href="{{ page.permalink | safe }}">{{ page.date }} - {{ page.title }}</a></h1>
 	</article>
 	{% endfor %}
 </main>
-{% endblock main %}
+{% endblock base_main %}
+

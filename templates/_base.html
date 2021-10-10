@@ -1,16 +1,56 @@
 <!DOCTYPE html>
+
+{% block base_config %}
+{% set base_config_now = "" %}
+{% set base_config_title = "タイトル未設定" %}
+{% set base_config_stylesheets = [] %}
+{% endblock base_config %}
+
+{% set base_config_stylesheets = ["/base.css"] | concat(with=base_config_stylesheets) %}
+
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="noindex">
-		<link rel="stylesheet" href="/base.css">
-		{% block style %}{% endblock %}
-		<title>{% block title %}タイトル未設定{% endblock %} - ihoronir.github.io</title>
+		{% for stylesheet in base_config_stylesheets %}
+		<link rel="stylesheet" href="{{stylesheet | safe}}">
+		{% endfor %}
+		<title>{{ base_config_title }} - ihoronir.github.io</title>
 	</head>
 	<body>
-		{% block header %}{% endblock %}
-		{% block main %}{% endblock %}
+		<header class="base_header">
+			<h1 class="base_header_logo"><a class="base_header_logo_link" href="/">ihoronir.<br class="base_header_logo_break">github.io</a></h1>
+			<nav class="base_header_nav">
+				<ul class="base_header_nav_list">
+					<li class="base_header_nav_list_Item base_header_nav_list_top">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_top_link{% if base_config_now == "top" %} base_header_nav_list_top_link-now{% endif %}" href="/">トップページ</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_entry">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_entry_link{% if base_config_now == "entry" %} base_header_nav_list_entry_link-now{% endif %}" href="/entries/">ブログ記事</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_game">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_game_link{% if base_config_now == "game" %} base_header_nav_list_game_link-now{% endif %}" href="/games/">ゲーム</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_develop">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_develop_link{% if base_config_now == "develop" %} base_header_nav_list_develop_link-now{% endif %}" href="/develop/">開発</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_music">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_music_link{% if base_config_now == "music" %} base_header_nav_list_music_link-now{% endif %}" href="/music/">音楽</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_photo">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_photo_link{% if base_config_now == "photo" %} base_header_nav_list_photo_link-now{% endif %}" href="/photos/">写真</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_profile">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_profile_link{% if base_config_now == "profile" %} base_header_nav_list_profile_link-now{% endif %}" href="/profile/">自己紹介</a>
+					</li>
+					<li class="base_header_nav_list_Item base_header_nav_list_about">
+						<a class="base_header_nav_list_Item_link base_header_nav_list_about_link{% if base_config_now == "about" %} base_header_nav_list_about_link-now{% endif %}" href="/about/">このサイトについて</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		{% block base_main %}{% endblock %}
 		<footer class="base_footer"><small class="footer_copyrights">Copyrights © Ihoronir All Rights Reserved.</small></footer>
 	</body>
 </html>
