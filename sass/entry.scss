@@ -38,6 +38,7 @@
 .entry_header_meta {
 	margin: 7px 0 0;
 	line-height: 32px;
+	overflow-wrap: break-word;
 }
 
 @media screen and (min-width: 720px) {
@@ -179,7 +180,7 @@
 	//	margin: 24px 0;
 	//}
 
-	p, ul, ol, pre, blockquote {
+	p, ul, ol, pre, blockquote, iframe {
 		margin: 0 0 24px;
 	}
 
