@@ -13,10 +13,32 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="noindex">
-		{% for stylesheet in base_config_stylesheets %}
-		<link rel="stylesheet" href="{{stylesheet | safe}}">
-		{% endfor %}
+
 		<title>{{ base_config_title }} - ihoronir.github.io</title>
+		<!--<meta name="description" content="">-->
+
+		{% for stylesheet in base_config_stylesheets %}
+		<link rel="stylesheet" href="{{ stylesheet | safe }}">
+		{% endfor %}
+
+		<link rel="icon" href="/favicon.ico">
+		<!--
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+		<link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
+		-->
+
+		<meta property="og:title" content="{{ base_config_title }}">
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="{{ current_url | safe }}">
+		<meta property="og:image" content="{{ get_url(path = "/cover.jpg") }}">
+		<meta property="og:locale" content="ja_JP">
+		<meta name="twitter:card" content="summary">
+		<meta name="twitter:creator" content="@ihoronir">
+		<!--
+		<meta property="og:description" content="">
+		<meta property="og:site_name" content="ihoronir.github.io">
+		<meta name="twitter:site" content="@ihoronir">
+		-->
 	</head>
 	<body>
 		<header class="base_header">
@@ -50,8 +72,16 @@
 				</ul>
 			</nav>
 		</header>
+
 		{% block base_main %}{% endblock %}
+
 		<footer class="base_footer"><small class="footer_copyrights">Copyrights © Ihoronir All Rights Reserved.</small></footer>
 	</body>
+
+{#
+<script type="text/javascript">
+	console.log({{ __tera_context }});
+</script>
+#}
 </html>
 
