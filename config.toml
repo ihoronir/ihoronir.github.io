@@ -18,7 +18,8 @@ taxonomies = [
 
 [markdown]
 highlight_code = true
-highlight_theme = "kronuz"
+#highlight_theme = "kronuz"
+highlight_theme = "visual-studio-dark"
 
 [slugify]
 paths = "off"

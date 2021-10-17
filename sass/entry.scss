@@ -161,7 +161,7 @@
 .entry_article {
 
 	overflow: hidden;
-	font-size: 16px;
+	font-size: 17px;
 
 	*:first-child {
 		margin-top: 0
@@ -200,13 +200,12 @@
 	h6 { font-size: 12px; }
 
 	code {
-		font-family: monospace;
-		background-color: #383838;
+		font-family: "Source Code Pro", "Monaco", "Consolas", monospace;
+		background-color: #1e1e1e;
 		padding: 0 4px;
 	}
 	pre {
-		font-size: 15.6px;
-		line-height: 1.7;
+		line-height: 1.5;
 		overflow: auto;
 		padding: 6px 8px;
 		code {
