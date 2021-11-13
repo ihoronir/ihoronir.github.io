@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://ihoronir.github.io/sitemap.xml

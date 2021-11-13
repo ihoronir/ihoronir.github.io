@@ -1,0 +1,73 @@
+<!doctype html><html lang=ja><head><meta charset=utf-8><meta content="width=device-width,initial-scale=1"name=viewport><title>【C言語】碁盤目状の道路の最短経路数を求める - ihoronir.github.io</title><link href=/base.css rel=stylesheet><link href=/entry.css rel=stylesheet><link href=/favicon.png rel=icon><meta content=【C言語】碁盤目状の道路の最短経路数を求める property=og:title><meta content=website property=og:type><meta content=ihoronir.github.io property=og:site_name><meta content=https://ihoronir.github.io/entries/DTsjrytj/ property=og:url><meta content=https://ihoronir.github.io/cover.jpg property=og:image><meta content=ja_JP property=og:locale><meta content=summary name=twitter:card><meta content=@ihoronir name=twitter:creator><script src="https://www.googletagmanager.com/gtag/js?id=G-RZSDNPP2LL"async></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RZSDNPP2LL')</script><body><header class=base_header><h1 class=base_header_logo><a class=base_header_logo_link href=/>ihoronir.<br class=base_header_logo_break>github.io</a></h1><nav class=base_header_nav><ul class=base_header_nav_list><li class="base_header_nav_list_Item base_header_nav_list_top"><a class="base_header_nav_list_Item_link base_header_nav_list_top_link"href=/>トップページ</a><li class="base_header_nav_list_Item base_header_nav_list_entry"><a class="base_header_nav_list_Item_link base_header_nav_list_entry_link base_header_nav_list_entry_link-now"href=/entries/>ブログ記事</a><li class="base_header_nav_list_Item base_header_nav_list_game"><a class="base_header_nav_list_Item_link base_header_nav_list_game_link"href=/games/>ゲーム</a><li class="base_header_nav_list_Item base_header_nav_list_develop"><a class="base_header_nav_list_Item_link base_header_nav_list_develop_link"href=/develop/>開発</a><li class="base_header_nav_list_Item base_header_nav_list_music"><a class="base_header_nav_list_Item_link base_header_nav_list_music_link"href=/music/>音楽</a><li class="base_header_nav_list_Item base_header_nav_list_photo"><a class="base_header_nav_list_Item_link base_header_nav_list_photo_link"href=/photos/>写真</a><li class="base_header_nav_list_Item base_header_nav_list_profile"><a class="base_header_nav_list_Item_link base_header_nav_list_profile_link"href=/profile/>自己紹介</a><li class="base_header_nav_list_Item base_header_nav_list_about"><a class="base_header_nav_list_Item_link base_header_nav_list_about_link"href=/about/>このサイトについて</a></ul></nav></header><main class="base_main entry"><header class=entry_header><nav class=entry_header_breadcrumb>現在地：<a class=entry_header_breadcrumb_Link href=/>トップ</a> > <a class=entry_header_breadcrumb_Link href=/entries/>ブログ記事</a> ></nav><h1 class=entry_header_title>【C言語】碁盤目状の道路の最短経路数を求める</h1><p class=entry_header_meta>この記事の公開日：2021-11-12<br> この記事の最終編集日：2021-11-12<br> この記事のURL：https://ihoronir.github.io/entries/DTsjrytj/</header><aside class=entry_ref><section class=entry_ref_toc><h2 class=entry_ref_Section_header>目次</h2><ul class=entry_ref_toc_list><li class=entry_ref_toc_list_Item><a class=entry_ref_toc_list_Item_link href=#まえがき>まえがき</a><li class=entry_ref_toc_list_Item><a class=entry_ref_toc_list_Item_link href=#やりたいこと>やりたいこと</a> <ul class=entry_ref_toc_list_Item_list><li class=entry_ref_toc_list_Item_list_Item><a class=entry_ref_toc_list_Item_list_Item_link href=#入力>入力</a><li class=entry_ref_toc_list_Item_list_Item><a class=entry_ref_toc_list_Item_list_Item_link href=#出力>出力</a><li class=entry_ref_toc_list_Item_list_Item><a class=entry_ref_toc_list_Item_list_Item_link href=#例>例</a></ul><li class=entry_ref_toc_list_Item><a class=entry_ref_toc_list_Item_link href=#組み合わせによる実装例>組み合わせによる実装例</a> <ul class=entry_ref_toc_list_Item_list><li class=entry_ref_toc_list_Item_list_Item><a class=entry_ref_toc_list_Item_list_Item_link href=#for_ループによる実装>for ループによる実装</a><li class=entry_ref_toc_list_Item_list_Item><a class=entry_ref_toc_list_Item_list_Item_link href=#再帰による実装>再帰による実装</a></ul><li class=entry_ref_toc_list_Item><a class=entry_ref_toc_list_Item_link href=#「書き込み方式」による実装例>「書き込み方式」による実装例</a><li class=entry_ref_toc_list_Item><a class=entry_ref_toc_list_Item_link href=#あとがき>あとがき</a></ul></section></aside><article class=entry_article><h2 id=まえがき>まえがき</h2><p>プログラミングの練習として、碁盤目状に道路が引かれた街の、ある交差点から別の交差点までの最短経路の数を求めてみます。いくつか実装例を考えたので、同じようなことをしている誰かの参考になれば幸いです。使用するプログラミング言語はC言語です。<h2 id=やりたいこと>やりたいこと</h2><p>京都や札幌のような、碁盤目状に道路が引かれた街を考えます。<p>具体的には、東西と南北の２方向に道路が並行して走っており、交差点で道路は直交します。また、碁盤目のマスの幅はどこを見ても等しいものとします。<h3 id=入力>入力</h3><p>以下の２つの整数が与えられます。どちらの値も碁番目のマスの幅を１とします。また、必ず０以上の値をとります。<ul><li>２つの交差点間の東西方向の距離<li>２つの交差点間の南北方向の距離</ul><h3 id=出力>出力</h3><p>与えられた入力から次の１つの整数を出力します。<ul><li>２つの交差点間の最短経路数</ul><h3 id=例>例</h3><p>図中の交差点Aと交差点Bの間の最短経路数を考えます。<pre style=background-color:#1e1e1e;color:#dcdcdc;><code><span>  |  |  |  |  |
+</span><span>--+--A--+--+--+--
+</span><span>  |  |  |  |  |
+</span><span>--+--+--+--B--+--
+</span><span>  |  |  |  |  |    ↑北
+</span></code></pre><p>入力は次の２つの整数です。<ul><li>AB間の東西方向の距離：２<li>AB間の南北方向の距離：１</ul><p>出力は次の１つの整数になります。<ul><li>AB間の最短経路数：３</ul><h2 id=組み合わせによる実装例>組み合わせによる実装例</h2><p>実装例では、変数名・仮引数名を次のように命名しています。<ul><li><code>h</code> ：２つの交差点間の東西方向の距離<li><code>v</code> ：２つの交差点間の南北方向の距離<li><code>n</code> ：組み合わせで、選ぶもとの集合の元の個数<li><code>r</code> ：組み合わせで、選ぶ個数</ul><p>求めたい最短経路数は、次の式で表されます。<pre style=background-color:#1e1e1e;color:#dcdcdc;><code><span>(h+v)Cv
+</span></code></pre><p><code>nCr</code> は <code>n</code> 個の元を持つ集合から <code>r</code> 個の元を選ぶ組み合わせの数です。<h3 id=for_ループによる実装>for ループによる実装</h3><p><code>nCr</code> は次の式で計算できます。<pre style=background-color:#1e1e1e;color:#dcdcdc;><code><span>       (n-r+1) x (n-r+2) x (n-r+3) x ... x (n-1) x n
+</span><span>nCr = -----------------------------------------------
+</span><span>          1    x    2    x    3    x ... x (r-1) x r
+</span></code></pre><p>この計算をそのまま for ループで実装したのが、次のコードです。分母と分子を分けて求め、最後に分子を分母で割っています。<pre class=language-c data-lang=c style=background-color:#1e1e1e;color:#dcdcdc;><code class=language-c data-lang=c><span style=color:#9b9b9b;>#include </span><span style=color:#d69d85;>&LTstdio.h>
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>combination(</span><span style=color:#569cd6;>int </span><span>n, </span><span style=color:#569cd6;>int </span><span>r) {
+</span><span>    </span><span style=color:#569cd6;>int</span><span> a = </span><span style=color:#b5cea8;>1</span><span>, b = </span><span style=color:#b5cea8;>1</span><span>;
+</span><span>    </span><span style=color:#569cd6;>int</span><span> i;
+</span><span>
+</span><span>    </span><span style=color:#569cd6;>for </span><span>(i = </span><span style=color:#b5cea8;>1</span><span>; i <= r; i ++) {
+</span><span>        a *= n - r + i;
+</span><span>        b *= i;
+</span><span>    }
+</span><span>
+</span><span>    </span><span style=color:#569cd6;>return</span><span> a / b;
+</span><span>}
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>main(</span><span style=color:#569cd6;>void</span><span>) {
+</span><span>    </span><span style=color:#569cd6;>int</span><span> h, v;
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の東西方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>h);
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の南北方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>v);
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の最短経路数：</span><span style=color:#b4cea8;>%d</span><span style=color:#e3bbab;>\n</span><span style=color:#d69d85;>"</span><span>, combination(h + v, v));
+</span><span>    
+</span><span>    </span><span style=color:#569cd6;>return </span><span style=color:#b5cea8;>0</span><span>;
+</span><span>}
+</span></code></pre><p>この実装は、入力の値が少しでも大きくなると、すぐに <code>combination</code> 関数内の変数 <code>a</code>, <code>b</code> が桁溢れしてしまうという問題があります。<h3 id=再帰による実装>再帰による実装</h3><p>for ループによる実装の桁溢れ問題を解決するため、再帰的定義に基づいて組み合わせを計算してみます。<p><code>nCr</code> は次のように再帰的に定義されます。<pre style=background-color:#1e1e1e;color:#dcdcdc;><code><span>nC0 = 1
+</span><span>
+</span><span>                     n
+</span><span>nCr = (n-1)C(r-1) x --- 
+</span><span>                     r
+</span></code></pre><p>この定義を使って再帰関数で実装したのが、次のコードです。<pre class=language-c data-lang=c style=background-color:#1e1e1e;color:#dcdcdc;><code class=language-c data-lang=c><span style=color:#9b9b9b;>#include </span><span style=color:#d69d85;>&LTstdio.h>
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>combination(</span><span style=color:#569cd6;>int </span><span>n, </span><span style=color:#569cd6;>int </span><span>r) {
+</span><span>    </span><span style=color:#569cd6;>if </span><span>(r == </span><span style=color:#b5cea8;>0</span><span>) </span><span style=color:#569cd6;>return </span><span style=color:#b5cea8;>1</span><span>;
+</span><span>    </span><span style=color:#569cd6;>return </span><span>combination(n - </span><span style=color:#b5cea8;>1</span><span>, r - </span><span style=color:#b5cea8;>1</span><span>) </span><span style=color:#569cd6;>*</span><span> n / r;
+</span><span>}
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>main(</span><span style=color:#569cd6;>void</span><span>) {
+</span><span>    </span><span style=color:#569cd6;>int</span><span> h, v;
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の東西方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>h);
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の南北方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>v);
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の最短経路数：</span><span style=color:#b4cea8;>%d</span><span style=color:#e3bbab;>\n</span><span style=color:#d69d85;>"</span><span>, combination(h + v, v));
+</span><span>
+</span><span>    </span><span style=color:#569cd6;>return </span><span style=color:#b5cea8;>0</span><span>;
+</span><span>}
+</span></code></pre><p>for ループを使った実装では対応しきれなかった大きな入力にも対応するようになりました。コードの見通しも良くなったのではないでしょうか。<h2 id=「書き込み方式」による実装例>「書き込み方式」による実装例</h2><p>「書き込み方式」で最短経路数を求められる原理は、下記ウェブページに書かれています。<ul><li><a href=https://manabitimes.jp/math/962>道順の場合の数を求めるテクニック | 高校数学の美しい物語</a></ul><p>「書き込み方式」を今回の問題に当てはめる上で重要なポイントは次の２つです。<ul><li>スタート地点から見て、東西方向または南北方向の距離が０であれば、その交差点にたどり着く最短経路数は１である。<li>スタート地点から見て、東西方向・南北方向の距離がどちらも０でなければ、その交差点にたどり着く最短経路数は、その直前に通り過ぎうる２つの交差点それぞれにたどり着く最短経路数の和である。</ul><p>これをそのまま再帰関数で実装したのが、次のコードです。<pre class=language-c data-lang=c style=background-color:#1e1e1e;color:#dcdcdc;><code class=language-c data-lang=c><span style=color:#9b9b9b;>#include </span><span style=color:#d69d85;>&LTstdio.h>
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>route(</span><span style=color:#569cd6;>int </span><span>h, </span><span style=color:#569cd6;>int </span><span>v) {
+</span><span>    </span><span style=color:#569cd6;>if </span><span>(h == </span><span style=color:#b5cea8;>0 </span><span>|| v == </span><span style=color:#b5cea8;>0</span><span>) </span><span style=color:#569cd6;>return </span><span style=color:#b5cea8;>1</span><span>;
+</span><span>    </span><span style=color:#569cd6;>return </span><span>route(h - </span><span style=color:#b5cea8;>1</span><span>, v) + route(h, v - </span><span style=color:#b5cea8;>1</span><span>);
+</span><span>}
+</span><span>
+</span><span style=color:#569cd6;>int </span><span>main(</span><span style=color:#569cd6;>void</span><span>) {
+</span><span>    </span><span style=color:#569cd6;>int</span><span> h, v;
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の東西方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>h);
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の南北方向の距離："</span><span>); fflush(stdout); scanf(</span><span style=color:#d69d85;>"</span><span style=color:#b4cea8;>%d</span><span style=color:#d69d85;>"</span><span>, </span><span style=color:#569cd6;>&</span><span>v);
+</span><span>
+</span><span>    printf(</span><span style=color:#d69d85;>"２つの交差点間の最短経路数：</span><span style=color:#b4cea8;>%d</span><span style=color:#e3bbab;>\n</span><span style=color:#d69d85;>"</span><span>, route(h, v));
+</span><span>
+</span><span>    </span><span style=color:#569cd6;>return </span><span style=color:#b5cea8;>0</span><span>;
+</span><span>}
+</span></code></pre><p>個人的には、この実装が一番直感的で分かりやすいと思います。ただ、効率は悪いです。<h2 id=あとがき>あとがき</h2><p>いろいろな方法で碁盤目状の道路の最短経路数を求めてみました。再帰を使うと、簡単に問題を解決できたので、再帰は便利だなと思いました。</article></main><footer class=base_footer><small class=footer_copyrights>Copyrights © Ihoronir All Rights Reserved.</small></footer>
