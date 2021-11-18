@@ -16,16 +16,23 @@ jobs:
       run: deno run --allow-net --allow-run build.ts
 
     - name: Deploy
-      run: |
-        cd public
-        git config --global user.name "ihoronir"
-        git config --global user.email "20489316+ihoronir@users.noreply.github.com"
-        git init
-        git remote add origin "https://github.com/ihoronir/ihoronir.github.io.git"
-        git fetch
-        git add .
-        git commit -m "update"
-        git push --force origin HEAD:gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./public
+
+    
+          #    - name: Deploy
+          #      run: |
+          #        cd public
+          #        git config --global user.name "ihoronir"
+          #        git config --global user.email "20489316+ihoronir@users.noreply.github.com"
+          #        git init
+          #        git remote add origin "https://github.com/ihoronir/ihoronir.github.io.git"
+          #        git fetch
+          #        git add .
+          #        git commit -m "update"
+          #        git push --force origin HEAD:gh-pages
 
 
       #jobs:
