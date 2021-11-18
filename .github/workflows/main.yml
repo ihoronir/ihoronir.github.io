@@ -21,7 +21,7 @@ jobs:
         git config --global user.name "ihoronir"
         git config --global user.email "20489316+ihoronir@users.noreply.github.com"
         git init
-        git remote set-url origin "https://github.com/ihoronir/ihoronir.github.io.git"
+        git remote add origin "https://github.com/ihoronir/ihoronir.github.io.git"
         git fetch
         git add .
         git commit -m "update"
