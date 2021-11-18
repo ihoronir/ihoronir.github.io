@@ -21,7 +21,7 @@ jobs:
         git config --global user.name "ihoronir"
         git config --global user.email "20489316+ihoronir@users.noreply.github.com"
         git init
-        git remote ser-url origin "https://github.com/ihoronir/ihoronir.github.io.git"
+        git remote set-url origin "https://github.com/ihoronir/ihoronir.github.io.git"
         git add .
         git commit -m "update"
         git push -f origin gh-pages
