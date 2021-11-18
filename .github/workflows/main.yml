@@ -10,8 +10,8 @@ jobs:
         deno-version: vx.x.x
     - run: git --version
     - run: wget -q -O - "https://github.com/getzola/zola/releases/download/v0.14.1/zola-v0.14.1-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
-    - run: deno run https://deno.land/std/examples/welcome.ts
-    - run: zola --version
+    - run: pwd
+    - run: ls
 
       #jobs:
       #  hello:
