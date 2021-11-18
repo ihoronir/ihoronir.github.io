@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="ja">
+	<title>ihoronir.github.io</title>
+	<subtitle>Ihoronir&#x27;s website</subtitle>
+	<link href="https://ihoronir.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <link href="https://ihoronir.github.io"/>
+	<generator uri="https://www.getzola.org/">Zola</generator>
+	<updated>2021-11-12T00:00:00+00:00</updated>
+	<id>https://ihoronir.github.io/atom.xml</id>
+	<entry xml:lang="ja">
+		<title>【C言語】碁盤目状の道路の最短経路数を求める</title>
+		<published>2021-11-12T00:00:00+00:00</published>
+		<updated>2021-11-12T00:00:00+00:00</updated>
+		<link href="https://ihoronir.github.io/entries/DTsjrytj/" type="text/html"/>
+		<id>https://ihoronir.github.io/entries/DTsjrytj/</id>
+		<content type="html">&lt;h2 id=&quot;まえがき&quot;&gt;まえがき&lt;&#x2F;h2&gt;
+&lt;p&gt;プログラミングの練習として、碁盤目状に道路が引かれた街の、ある交差点から別の交差点までの最短経路の数を求めてみます。いくつか実装例を考えたので、同じようなことをしている誰かの参考になれば幸いです。使用するプログラミング言語はC言語です。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;やりたいこと&quot;&gt;やりたいこと&lt;&#x2F;h2&gt;
+&lt;p&gt;京都や札幌のような、碁盤目状に道路が引かれた街を考えます。&lt;&#x2F;p&gt;
+&lt;p&gt;具体的には、東西と南北の２方向に道路が並行して走っており、交差点で道路は直交します。また、碁盤目のマスの幅はどこを見ても等しいものとします。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;入力&quot;&gt;入力&lt;&#x2F;h3&gt;
+&lt;p&gt;以下の２つの整数が与えられます。どちらの値も碁番目のマスの幅を１とします。また、必ず０以上の値をとります。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;２つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;２つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;出力&quot;&gt;出力&lt;&#x2F;h3&gt;
+&lt;p&gt;与えられた入力から次の１つの整数を出力します。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;２つの交差点間の最短経路数&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;例&quot;&gt;例&lt;&#x2F;h3&gt;
+&lt;p&gt;図中の交差点Aと交差点Bの間の最短経路数を考えます。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;  |  |  |  |  |
+&lt;&#x2F;span&gt;&lt;span&gt;--+--A--+--+--+--
+&lt;&#x2F;span&gt;&lt;span&gt;  |  |  |  |  |
+&lt;&#x2F;span&gt;&lt;span&gt;--+--+--+--B--+--
+&lt;&#x2F;span&gt;&lt;span&gt;  |  |  |  |  |    ↑北
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;入力は次の２つの整数です。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;AB間の東西方向の距離：２&lt;&#x2F;li&gt;
+&lt;li&gt;AB間の南北方向の距離：１&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;出力は次の１つの整数になります。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;AB間の最短経路数：３&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;組み合わせによる実装例&quot;&gt;組み合わせによる実装例&lt;&#x2F;h2&gt;
+&lt;p&gt;実装例では、変数名・仮引数名を次のように命名しています。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;h&lt;&#x2F;code&gt; ：２つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;v&lt;&#x2F;code&gt; ：２つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;n&lt;&#x2F;code&gt; ：組み合わせで、選ぶもとの集合の元の個数&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;r&lt;&#x2F;code&gt; ：組み合わせで、選ぶ個数&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;求めたい最短経路数は、次の式で表されます。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;(h+v)Cv
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;&lt;code&gt;nCr&lt;&#x2F;code&gt; は &lt;code&gt;n&lt;&#x2F;code&gt; 個の元を持つ集合から &lt;code&gt;r&lt;&#x2F;code&gt; 個の元を選ぶ組み合わせの数です。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;for_ループによる実装&quot;&gt;for ループによる実装&lt;&#x2F;h3&gt;
+&lt;p&gt;&lt;code&gt;nCr&lt;&#x2F;code&gt; は次の式で計算できます。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;       (n-r+1) x (n-r+2) x (n-r+3) x ... x (n-1) x n
+&lt;&#x2F;span&gt;&lt;span&gt;nCr = -----------------------------------------------
+&lt;&#x2F;span&gt;&lt;span&gt;          1    x    2    x    3    x ... x (r-1) x r
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;この計算をそのまま for ループで実装したのが、次のコードです。分母と分子を分けて求め、最後に分子を分母で割っています。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;combination(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;n, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;r) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; a = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, b = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; i;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span&gt;(i = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;; i &amp;lt;= r; i ++) {
+&lt;&#x2F;span&gt;&lt;span&gt;        a *= n - r + i;
+&lt;&#x2F;span&gt;&lt;span&gt;        b *= i;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return&lt;&#x2F;span&gt;&lt;span&gt; a &#x2F; b;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
+&lt;&#x2F;span&gt;&lt;span&gt;    
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;この実装は、入力の値が少しでも大きくなると、すぐに &lt;code&gt;combination&lt;&#x2F;code&gt; 関数内の変数 &lt;code&gt;a&lt;&#x2F;code&gt;, &lt;code&gt;b&lt;&#x2F;code&gt; が桁溢れしてしまうという問題があります。&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;再帰による実装&quot;&gt;再帰による実装&lt;&#x2F;h3&gt;
+&lt;p&gt;for ループによる実装の桁溢れ問題を解決するため、再帰的定義に基づいて組み合わせを計算してみます。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;nCr&lt;&#x2F;code&gt; は次のように再帰的に定義されます。&lt;&#x2F;p&gt;
+&lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;nC0 = 1
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;                     n
+&lt;&#x2F;span&gt;&lt;span&gt;nCr = (n-1)C(r-1) x --- 
+&lt;&#x2F;span&gt;&lt;span&gt;                     r
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;この定義を使って再帰関数で実装したのが、次のコードです。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;combination(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;n, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;r) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(r == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;combination(n - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, r - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;*&lt;&#x2F;span&gt;&lt;span&gt; n &#x2F; r;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;for ループを使った実装では対応しきれなかった大きな入力にも対応するようになりました。コードの見通しも良くなったのではないでしょうか。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;「書き込み方式」による実装例&quot;&gt;「書き込み方式」による実装例&lt;&#x2F;h2&gt;
+&lt;p&gt;「書き込み方式」で最短経路数を求められる原理は、下記ウェブページに書かれています。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;manabitimes.jp&#x2F;math&#x2F;962&quot;&gt;道順の場合の数を求めるテクニック | 高校数学の美しい物語&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;「書き込み方式」を今回の問題に当てはめる上で重要なポイントは次の２つです。&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;スタート地点から見て、東西方向または南北方向の距離が０であれば、その交差点にたどり着く最短経路数は１である。&lt;&#x2F;li&gt;
+&lt;li&gt;スタート地点から見て、東西方向・南北方向の距離がどちらも０でなければ、その交差点にたどり着く最短経路数は、その直前に通り過ぎうる２つの交差点それぞれにたどり着く最短経路数の和である。&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;これをそのまま再帰関数で実装したのが、次のコードです。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;route(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;h, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;v) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span&gt;(h == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0 &lt;&#x2F;span&gt;&lt;span&gt;|| v == &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span&gt;route(h - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;, v) + route(h, v - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, route(h, v));
+&lt;&#x2F;span&gt;&lt;span&gt;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;個人的には、この実装が一番直感的で分かりやすいと思います。ただ、効率は悪いです。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;あとがき&quot;&gt;あとがき&lt;&#x2F;h2&gt;
+&lt;p&gt;いろいろな方法で碁盤目状の道路の最短経路数を求めてみました。再帰を使うと、簡単に問題を解決できたので、再帰は便利だなと思いました。&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="ja">
+		<title>秋がはじまるよ</title>
+		<published>2021-10-15T00:00:00+00:00</published>
+		<updated>2021-10-15T00:00:00+00:00</updated>
+		<link href="https://ihoronir.github.io/entries/P9SCQGxM/" type="text/html"/>
+		<id>https://ihoronir.github.io/entries/P9SCQGxM/</id>
+		<content type="html">&lt;h2 id=&quot;秋の空&quot;&gt;秋の空&lt;&#x2F;h2&gt;
+&lt;p&gt;ようやく気温が下がってきて、秋っぽさを感じられるようになってきました。秋の空って雲が少なくて、明るくて気持ちが良いです。一番好きな季節かも。&lt;&#x2F;p&gt;
+&lt;p&gt;夏の真っ青な青空もいいけど、秋のライトブルーな空もいいよね！これから木々が紅葉していけばなおさら木の葉の鮮やかな色彩に空の色がマッチして、最高だろうなぁ。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;文章を書く力&quot;&gt;文章を書く力&lt;&#x2F;h2&gt;
+&lt;p&gt;ここまでこの記事を読んできた皆さんならお察しかと思いますが、僕の文章力はかなり不足しています。なんで、ブログを書くことを通して文章力をつけていきたいなという所存です。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ところで&quot;&gt;ところで&lt;&#x2F;h2&gt;
+&lt;p&gt;書くことがなくなってきました。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;そうだ&quot;&gt;そうだ&lt;&#x2F;h2&gt;
+&lt;p&gt;最近聴いてる曲でも紹介しようかな。&lt;&#x2F;p&gt;
+&lt;iframe width=&quot;312&quot; height=&quot;176&quot; src=&quot;https:&#x2F;&#x2F;ext.nicovideo.jp&#x2F;thumb&#x2F;sm20658500&quot; scrolling=&quot;no&quot; style=&quot;border:solid 1px #ccc;&quot; frameborder=&quot;0&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nicovideo.jp&#x2F;watch&#x2F;sm20658500&quot;&gt;【初音ミクappend】　雀色コンデンサ　【オリジナル曲】&lt;&#x2F;a&gt;&lt;&#x2F;iframe&gt;
+&lt;iframe width=&quot;312&quot; height=&quot;176&quot; src=&quot;https:&#x2F;&#x2F;ext.nicovideo.jp&#x2F;thumb&#x2F;sm13077134&quot; scrolling=&quot;no&quot; style=&quot;border:solid 1px #ccc;&quot; frameborder=&quot;0&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nicovideo.jp&#x2F;watch&#x2F;sm13077134&quot;&gt;【初音ミクappend】 Ameto 【オリジナル曲】&lt;&#x2F;a&gt;&lt;&#x2F;iframe&gt;
+&lt;p&gt;最近って書いたけど、嘘です。最近に限らず前から聴いてます。まあそれはともかく &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;whoosrockq&quot;&gt;whoo さん&lt;&#x2F;a&gt;の曲はどれも本当に良いのでぜひ聴いてください！&lt;&#x2F;p&gt;
+&lt;p&gt;音楽を聴いていたらもう少し書く元気が出てきた！&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;年末に向けて&quot;&gt;年末に向けて&lt;&#x2F;h2&gt;
+&lt;p&gt;今は１０月中旬なので、実はもうあと２ヶ月ちょいで今年も終わりです。でも自分にはまだ全然そんな実感がありません。毎年そうだけど、全然気が付かないうちに１１月になり、１２月になって、一年が終わってしまいます。&lt;&#x2F;p&gt;
+&lt;p&gt;とはいえ人間含め動物たちは季節の変化に敏感なもので、気温や日の入り時刻が変化するとともに、寒い冬が近づいているということを本能的に感じ取ってしまいますよね。そんな現実から目を背けたくて、ハロウィーンとか学校の文化祭とかのイベントを必死でやっているのかもなぁ、そういうイベントに夢中になっているからあっと言う間に時間が過ぎていくのかもなぁ、と思う今日この頃です。（「今日この頃です」←便利フレーズ）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;しめくくり&quot;&gt;しめくくり&lt;&#x2F;h2&gt;
+&lt;p&gt;来週から気温がガクッと下がる、ということを人から聞いたので、風邪をひかないように気をつけたいですね。それでは良い週末を！&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="ja">
+		<title>【C言語】switch文のフォールスルーの便利かもしれない使い方</title>
+		<published>2021-10-13T00:00:00+00:00</published>
+		<updated>2021-10-13T00:00:00+00:00</updated>
+		<link href="https://ihoronir.github.io/entries/BjDN9gTr/" type="text/html"/>
+		<id>https://ihoronir.github.io/entries/BjDN9gTr/</id>
+		<content type="html">&lt;h2 id=&quot;まえがき&quot;&gt;まえがき&lt;&#x2F;h2&gt;
+&lt;p&gt;switch 文のフォールスルーの便利かもしれない使い方を発見したので紹介します。使用するプログラミング言語はC言語です。&lt;&#x2F;p&gt;
+&lt;p&gt;一般的には switch 文でフォールスルーを使うことはバグの温床として忌避されているような気がするので、そういった意味では今回紹介するコードはあんまり良くないかもしれないですが、まあ話半分で読んでもらえたらなと思います。（いい加減ですみません！）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;フォールスルーとは&quot;&gt;フォールスルーとは&lt;&#x2F;h2&gt;
+&lt;p&gt;そもそもフォールスルーというのは、「 switch 文で break を書かなかった場合に制御が switch 文から抜け出さず、後続の case に続く文が実行される。」ことを指します。次に示すコードが例です。&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; num;
+&lt;&#x2F;span&gt;&lt;span&gt;    scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;num);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;switch &lt;&#x2F;span&gt;&lt;span&gt;(num) {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;: puts(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;hoge&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;: puts(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;fuga&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;: puts(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;foo&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;break&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;: puts(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;bar&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;);
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#608b4e;&quot;&gt;# 入力
+&lt;&#x2F;span&gt;&lt;span&gt;1
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#608b4e;&quot;&gt;# 出力
+&lt;&#x2F;span&gt;&lt;span&gt;hoge
+&lt;&#x2F;span&gt;&lt;span&gt;fuga
+&lt;&#x2F;span&gt;&lt;span&gt;foo
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;入力が &lt;code&gt;1&lt;&#x2F;code&gt; だったので switch 文の中の &lt;code&gt;case 1:&lt;&#x2F;code&gt; 以降の文が、 break が登場するまで実行されました。こんな感じで case に対応する break を意図的に省くことで、制御が次の case へと落ちていくようなプログラムを書くことができます。これがフォールスルーです。&lt;&#x2F;p&gt;
+&lt;p&gt;フォールスルーを使うと「日付を入力するとその日がその年の何日目かを出力するプログラム」をシンプルに書けるということに気づいたので、実装例を紹介します。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;実装例&quot;&gt;実装例&lt;&#x2F;h2&gt;
+&lt;p&gt;以下が switch 文のフォールスルーを使った「日付を入力するとその日がその年の何日目かを出力するプログラム」の実装例です。（うるう年は考慮していません）&lt;&#x2F;p&gt;
+&lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; month, date;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; count = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d %d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;month, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;date);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;switch &lt;&#x2F;span&gt;&lt;span&gt;(month - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) {
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;9&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;8&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;7&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;6&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;5&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;4&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;3&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;28&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;    }
+&lt;&#x2F;span&gt;&lt;span&gt;    count += date;
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, count);
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
+&lt;&#x2F;span&gt;&lt;span&gt;}
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;pre data-lang=&quot;bash&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-bash &quot;&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span style=&quot;color:#608b4e;&quot;&gt;# 入力
+&lt;&#x2F;span&gt;&lt;span&gt;12 31
+&lt;&#x2F;span&gt;&lt;span style=&quot;color:#608b4e;&quot;&gt;# 出力
+&lt;&#x2F;span&gt;&lt;span&gt;365
+&lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
+&lt;p&gt;フォールスルーを使ったおかげで、結構シンプルに実装できているのではないでしょうか。&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;補足：配列や繰り返しを使わなかった理由&quot;&gt;補足：配列や繰り返しを使わなかった理由&lt;&#x2F;h2&gt;
+&lt;p&gt;この実装は大学の課題で作成したあるプログラムの一部で使用したものなんですが、大学の授業ではまだ配列や繰り返しを扱っておらず、課題でそれらの機能を使ってはいけないという縛りがあったため、配列や繰り返しは使いませんでした。&lt;&#x2F;p&gt;
+&lt;p&gt;結果的にこの縛りのおかげでフォールスルーの面白い使い方を見つけられたので良かったんではないでしょうか。（何目線）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;あとがき&quot;&gt;あとがき&lt;&#x2F;h2&gt;
+&lt;p&gt;プログラムを書くのって面白いですね！&lt;&#x2F;p&gt;
+</content>
+	</entry>
+	<entry xml:lang="ja">
+		<title>ブログ始めました</title>
+		<published>2021-10-10T00:00:00+00:00</published>
+		<updated>2021-10-10T00:00:00+00:00</updated>
+		<link href="https://ihoronir.github.io/entries/QiKbRkRE/" type="text/html"/>
+		<id>https://ihoronir.github.io/entries/QiKbRkRE/</id>
+		<content type="html">&lt;h2 id=&quot;まえがき&quot;&gt;まえがき&lt;&#x2F;h2&gt;
+&lt;p&gt;こんにちは！ Ihoronir という者です。というわけで、記事タイトルにもある通り、ブログを始めました〜！！（パチパチ👏）&lt;br&gt;
+と言ってもブログに何を書けばいいのか全然わからなくて手探り状態って感じですが、ぼちぼち更新していこうと思ってます！&lt;&#x2F;p&gt;
+&lt;p&gt;この記事がこのブログの最初の記事になるので、とりあえず簡単な自己紹介と、あとはなんでブログを始めたのかについて書こうと思います！面白くはないと思うけど良かったら読んでみてね！&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;自己紹介？&quot;&gt;自己紹介？&lt;&#x2F;h2&gt;
+&lt;p&gt;改めましてこんにちは！ Ihoronir です！肩書は…学生です！いや知るかよ！どうでもええわ！って感じだと思いますが、まあとりあえずそんな感じです！（そんな感じって何）&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;ブログを始めた理由&quot;&gt;ブログを始めた理由&lt;&#x2F;h2&gt;
+&lt;p&gt;ブログって自分の思ったこととかを適当に書いてそれを世界中に向けて発信できて、すごくグローバル（？）ですよね！これからはグローバルの時代なんで（？）ブログを書いてグローバルな人間になろうと思った次第です！&lt;&#x2F;p&gt;
+&lt;p&gt;目指せグローバル！&lt;&#x2F;p&gt;
+&lt;p&gt;というのは今考えた適当な理由で、実際のところは Zola という静的サイトジェネレーターを試してみたかった、というのが本当の理由です。使ってみたら結構使いやすかったので、オススメです！&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;あとがき&quot;&gt;あとがき&lt;&#x2F;h2&gt;
+&lt;p&gt;というわけで以上がこのブログの最初の記事でした！&lt;strong&gt;いかがでしたか？&lt;&#x2F;strong&gt;（いかがでしたか？ではない）&lt;br&gt;
+これからこのブログでどんな黒歴史が生まれていくのか、楽しみですね！&lt;br&gt;
+それではみなさん良い一日を！&lt;&#x2F;p&gt;
+</content>
+	</entry>
+</feed>
