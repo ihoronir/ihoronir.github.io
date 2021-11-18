@@ -25,7 +25,7 @@ jobs:
         git fetch
         git add .
         git commit -m "update"
-        git push --force origin gh-pages
+        git push --force origin HEAD:gh-pages
 
 
       #jobs:
