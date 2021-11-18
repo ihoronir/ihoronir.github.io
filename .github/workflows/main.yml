@@ -23,6 +23,7 @@ jobs:
         git config --global init.defaultBranch "master"
         git init
         git config remote.origin.url "git@github.com:ihoronir/ihoronir.github.io.git"
+        git branch -a
         git checkout master
         git add .
         git commit -m "update"
