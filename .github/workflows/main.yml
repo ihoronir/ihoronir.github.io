@@ -18,7 +18,14 @@ jobs:
     - name: Deploy
       run: |
         cd public
-        ls
+        git config user.name "GitHub Actions"
+        git config user.email "github-actions-bot@users.noreply.github.com"
+        git init
+        git remote add origin https://github.com/${GITHUB_REPOSITORY}
+        git add .
+        git commit -m "update"
+        git push origin gh-pages
+
 
       #jobs:
       #  hello:
