@@ -1,12 +1,22 @@
 on: push
 name: Build and deploy on push
-  jobs:
-    build:
-      runs-on: ubuntu-latest
-      steps:
-      - uses: actions/checkout@master
-      - run: git
-      - run: wget
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: git
+    - run: wget
+
+      #jobs:
+      #  hello:
+      #    runs-on: ubuntu-latest
+      #    steps:
+      #      - uses: actions/checkout@master
+      #      - uses: denolib/setup-deno@v1.1.0
+      #        with:
+      #          deno-version: 0.x
+      #      - run: deno run https://deno.land/std/examples/welcome.ts
 
   #jobs:
   #  build:
