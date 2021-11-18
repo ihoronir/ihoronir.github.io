@@ -20,10 +20,12 @@ jobs:
         cd public
         git config --global user.name "GitHub Actions"
         git config --global user.email "github-actions-bot@users.noreply.github.com"
+        git config --global init.defaultBranch "master"
         git init
         git remote add origin https://github.com/${GITHUB_REPOSITORY}
         git add .
         git commit -m "update"
+        git push origin gh-pages
 
 
       #jobs:
