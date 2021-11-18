@@ -11,7 +11,12 @@
 	<h1 class="top_header">Welcome to ihoronir.github.io!</h1>
 	<article class="top_article">
 		{{- section.content | safe}}
-
+		{% set tex = "c = \pm\sqrt{a^2 + b^2}" | urlencode_strict%}
+		{% set postdata = load_data(url="http://localhost:8080/" ~ tex)%}
+		<span class="katex-display" style="font-size: 18px">
+			{{postdata|safe}}
+		</span>
 	</article>
+
 </main>
 {% endblock base_main %}
