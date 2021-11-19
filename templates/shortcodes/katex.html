@@ -1,20 +1,15 @@
-{% set tex = source | default(value = "") | urlencode_strict%}
-{% set mode = "inline" %}
-{% if block %}
-{% set tex = body | urlencode_strict%}
-{% set mode = "block" %}
-{% endif %}
-{% set postdata = load_data(url="http://localhost:8080/" ~ mode ~ tex)%}
+{% set tex  = source | default(value = "") | urlencode_strict          %}
+{% set mode = "inline"                                                 %}
+{% if block                                                            %}
+{%     set tex  = body | urlencode_strict                              %}
+{%     set mode = "block"                                              %}
+{% endif                                                               %}
+{% set postdata = load_data(url="http://localhost:8080/" ~ mode ~ tex) %}
 
 
-{% if block %}
-<p>
-{% endif %}
+{% if block %}<p>{% endif %}
 
-{{postdata|safe}}
+{{ postdata | safe }}
 
-
-{% if block %}
-</p>
-{% endif %}
+{% if block %}</p>{% endif %}
 

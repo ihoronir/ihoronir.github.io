@@ -19,10 +19,10 @@ import katex from "https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.mjs";
 const addr = ":8080";
 
 console.log(`KaTeX compile server listening on http://localhost${addr}
-`);
+			`);
 
 serve((request: Request) => {
-    const { pathname } = new URL(request.url);
+	const { pathname } = new URL(request.url);
 	const data = decodeURIComponent(pathname).slice(1);
 
 	let source = "";
@@ -38,11 +38,11 @@ serve((request: Request) => {
 		displayMode = false;
 	}
 
-    const html = katex.renderToString(source, {
-        displayMode
-    });
+	const html = katex.renderToString(source, {
+		displayMode
+	});
 
-    return new Response(html);
+	return new Response(html);
 }, { addr });
 
 await Deno.run({ cmd: ["zola", Deno.args[0]] }).status();
