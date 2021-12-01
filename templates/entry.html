@@ -8,79 +8,46 @@
 
 {% block base_main %}
 <main class="base_main entry">
-	<header class="entry_header">
-		<nav class="entry_header_breadcrumb">現在地：<a class="entry_header_breadcrumb_Link" href="/">トップ</a> > <a class="entry_header_breadcrumb_Link" href="/entries/">ブログ記事</a> ></nav>
-		<h1 class="entry_header_title">{{ page.title }}</h1>
-		<p class="entry_header_meta">
-		この記事の公開日：{{ page.date }}<br>
-		この記事の最終編集日：{{ page.updated | default(value = page.date) }}<br>
-		この記事のURL：{{page.permalink | safe}}
-		</p>
-	</header>
+	<article class="entry_article">
+		<header class="entry_article_header">
+			<h1 class="entry_article_header_title">{{ page.title }}</h1>
+			<p class="entry_article_header_meta">
+			この記事の公開日：{{ page.date }}<br>
+			この記事の最終編集日：{{ page.updated | default(value = page.date) }}
+			</p>
+		</header>
+		{#
+		<aside style="text-align: center; overflow: hidden; font-weight: bold; margin: 60px 0; background: #222; border: #303030 1px solid;">広告 Advertisement<br>
+			<img src="/cover.jpg" width=728px height=90px>
+		</aside>
+		#}
+		{{- page.content | safe}}
+	</article>
 	<aside class="entry_ref">
-		<!--
-		<section class="entry_ref_lists">
-			<h2 class="entry_ref_Section_header">関連記事リスト</h2>
-			{# loop #}
-			<details class="entry_ref_lists_List">
-				<summary class="entry_ref_lists_List_title">ArchLinux 2021 (2)</summary>
-				<ul class="entry_ref_lists_List_list">
-					<li class="entry_ref_lists_List_list_item">
-						<a class="entry_ref_lists_List_list_Item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-					</li>
-					<li class="entry_ref_lists_List_list_item">
-						<a class="entry_ref_lists_List_list_Item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-					</li>
-				</ul>
-			</details>
-			<details class="entry_ref_lists_List">
-				<summary class="entry_ref_lists_List_title">ArchLinux 2021 (2)</summary>
-				<ul class="entry_ref_lists_List_list">
-					<li class="entry_ref_lists_List_list_item">
-						<a class="entry_ref_lists_List_list_Item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-					</li>
-					<li class="entry_ref_lists_List_list_item">
-						<a class="entry_ref_lists_List_list_Item_link" href="#">voanwoia vwnarbvn;abn naioer</a>
-					</li>
-				</ul>
-			</details>
-			{# /loop #}
-		</section>
-		-->
+		{#
+		<div style="text-align: center;font-weight: bold;">広告 Advertisement<br>
+			<img src="/cover.jpg" width=336px height=280px>
+		</div>
+		#}
 		<section class="entry_ref_toc">
 			<h2 class="entry_ref_Section_header">目次</h2>
 			<ul class="entry_ref_toc_list">
-				{%- for h1 in page.toc %}
+				{% for h1 in page.toc %}
 				<li class="entry_ref_toc_list_Item">
 					<a class="entry_ref_toc_list_Item_link" href="#{{h1.id | safe}}">{{ h1.title }}</a>
-					{%- if h1.children %}
+					{% if h1.children %}
 					<ul class="entry_ref_toc_list_Item_list">
-						{%- for h2 in h1.children %}
+						{% for h2 in h1.children %}
 						<li class="entry_ref_toc_list_Item_list_Item">
 							<a class="entry_ref_toc_list_Item_list_Item_link" href="#{{h2.id | safe}}">{{ h2.title }}</a>
 						</li>
-						{%- endfor %}
+						{% endfor %}
 					</ul>
-					{%- endif %}
+					{% endif %}
 				</li>
-				{%- endfor %}
+				{% endfor %}
 			</ul>
 		</section>
 	</aside>
-	<article class="entry_article">
-		{{- page.content | safe}}
-	</article>
-	{#
-	<div class="entry_prevnext">
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-		Dummy Text<br>
-	</div>
-	#}
 </main>
 {% endblock base_main %}

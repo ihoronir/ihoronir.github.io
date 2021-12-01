@@ -1,6 +1,6 @@
 // # Installation
 //
-// $ deno install --allow-run --allow-net ihoronigen.ts
+// $ deno install --allow-run --allow-net ihoronigen.js
 //
 // # Usage
 //
@@ -21,7 +21,7 @@ const addr = ":8080";
 console.log(`KaTeX compile server listening on http://localhost${addr}
 			`);
 
-serve((request: Request) => {
+serve((request/*: Request*/) => {
 	const { pathname } = new URL(request.url);
 	const data = decodeURIComponent(pathname).slice(1);
 

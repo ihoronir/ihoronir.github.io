@@ -39,9 +39,15 @@
 		<meta name="twitter:site" content="@ihoronir">
 		<meta property="og:description" content="">
 		-->
+		{% if config.base_url != "http://127.0.0.1:1111" %}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-RZSDNPP2LL"></script>
 		<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RZSDNPP2LL')</script>
+		{% else %}
+		<script type="text/javascript">
+			console.log({{ __tera_context }});
+		</script>
+		{% endif %}
 	</head>
 	<body>
 		<header class="base_header">
@@ -82,16 +88,25 @@
 					</li>
 				</ul>
 			</nav>
+			{#
+			<aside class="base_header_ad" style="text-align: center;font-weight: bold">広告 Advertisement<br>
+				<img src="/cover.jpg" width=300px height=600px>
+			</aside>
+			#}
 		</header>
+
+		<nav class="base_breadcrumb">現在地：
+			{% set page_or_section = page | default(value = section) %}
+			{% for ancestor_path in page_or_section.ancestors %}
+			{% set section = get_section(path = ancestor_path) %}
+			<a href="{{section.path}}">{{ section.title }}</a> / 
+			{% endfor %}
+			<a href="{{page_or_section.path}}">{{ page_or_section.title }}</a>
+		</nav>
 
 		{% block base_main %}{% endblock %}
 
 		<footer class="base_footer"><small class="footer_copyrights">Copyrights © Ihoronir All Rights Reserved.</small></footer>
 	</body>
-	{#
-<script type="text/javascript">
-	console.log({{ __tera_context }});
-</script>
-#}
 </html>
 

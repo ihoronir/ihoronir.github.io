@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 /*figure, figcaption,
 dl,dd,*/
 h1, h2, h3, h4, h5, h6,
@@ -14,7 +18,7 @@ h4 { font-size: 16px; }
 h5 { font-size: 14px; }
 h6 { font-size: 12px; }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6, strong {
 	color: white;
 }
 
@@ -70,7 +74,8 @@ blockquote {
 }
 
 html {
-	background-color: #404040;
+	//background-color: #404040;
+	background: #060606;//linear-gradient(0deg, #0d0d0d, #0d0d0d);
 }
 
 body {
@@ -82,7 +87,9 @@ body {
 	max-width: 886px;
 	line-height: 1.9;
 	margin: 0 auto;
-	box-shadow: 0 0 4px 0px rgba(0, 0, 0, 0.6);
+	box-shadow: 0 0 100px 100px #101010, 0 0 1px 1px #fff;
+	border-left: #303030 1px solid;
+	border-right: #303030 1px solid;
 	//scroll-behavior: smooth;
 	//text-rendering: optimizeSpeed;
 }
@@ -96,22 +103,33 @@ body {
 @media screen and (min-width: 1536px) {
 	body {
 		display: grid;
-		grid-template-columns: 300px 1fr;
-		grid-template-rows: max-content 100px;
+		grid-template-columns: 314px 1fr;
+		grid-template-rows: 40px max-content 100px;
 		max-width: 1536px;
 	}
 }
 
 @import "_base_header.scss";
 
-.base_main {
-	background-color: #090909;
+.base_breadcrumb {
+	border-bottom: #303030 1px solid;
+	padding: 5px 20px;
+	line-height: 30px;
 }
 
+.base_main {
+	background: #0e0e0e;
+}
+
+
 @media screen and (min-width: 1536px) {
-	.base_main {
+	.base_breadcrumb {
 		grid-column: 2 / 3;
 		grid-row: 1 / 2;
+	}
+	.base_main {
+		grid-column: 2 / 3;
+		grid-row: 2 / 3;
 	}
 }
 

@@ -17,7 +17,7 @@ jobs:
       run: wget -q -O - "https://github.com/getzola/zola/releases/download/v0.14.1/zola-v0.14.1-x86_64-unknown-linux-gnu.tar.gz" | tar xzf - -C /usr/local/bin
 
     - name: Build
-      run: deno run --allow-net --allow-run ihoronigen.ts build
+      run: deno run --allow-net --allow-run ihoronigen.js build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3

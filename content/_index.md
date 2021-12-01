@@ -1,5 +1,5 @@
 +++
-title = "Ihoronir のウェブサイトへようこそ！"
+title = "トップ"
 template = "index.html"
 +++
 
