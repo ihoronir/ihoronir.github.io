@@ -11,9 +11,9 @@ minify_html = true
 
 generate_feed = true
 
-taxonomies = [
-    {name = "entry-lists", feed = false},
-]
+#taxonomies = [
+#    {name = "entry-lists", feed = false},
+#]
 
 
 [markdown]
