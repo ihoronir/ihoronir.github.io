@@ -39,11 +39,12 @@
 		<meta name="twitter:site" content="@ihoronir">
 		<meta property="og:description" content="">
 		-->
-		{% if config.base_url != "http://127.0.0.1:1111" %}
+		{% if config.mode == "Build" %}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-RZSDNPP2LL"></script>
 		<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-RZSDNPP2LL')</script>
-		{% else %}
+		{% endif %}
+		{% if config.mode == "Serve" %}
 		<script type="text/javascript">
 			console.log({{ __tera_context }});
 		</script>
@@ -88,11 +89,9 @@
 					</li>
 				</ul>
 			</nav>
-			{#
-			<aside class="base_header_ad" style="text-align: center;font-weight: bold">広告 Advertisement<br>
-				<img src="/cover.jpg" width=300px height=600px>
+			<aside class="base_header_ad" style="text-align: center;font-weight: bold">広告 Advertisement
+				<div style="background: #333; width:300px; height:600px; margin: auto; padding: 40px 0; font-size: 32px; color: #777;">広告募集中</div>
 			</aside>
-			#}
 		</header>
 
 		<nav class="base_breadcrumb">現在地：
