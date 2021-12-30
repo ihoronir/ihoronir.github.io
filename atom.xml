@@ -27,7 +27,7 @@
 
 
  を導入して、数式が書けるようになりました！せっかくなので何か数式を使った記事を書きたいなーと思ってネタを考えていたのですが、そういえば最近大学で、&lt;strong&gt;線形最適化問題&lt;&#x2F;strong&gt;をコンピューターで解く方法の一つであるシンプレックス法について教わったので、理解した内容を自分なりにまとめてみようと思います。&lt;&#x2F;p&gt;
-&lt;p&gt;この記事では次の２つの事項を扱います。&lt;&#x2F;p&gt;
+&lt;p&gt;この記事では次の2つの事項を扱います。&lt;&#x2F;p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;線形最適化問題とは何か&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;strong&gt;線形最適化問題の標準形と標準形への変換方法&lt;&#x2F;strong&gt;&lt;&#x2F;li&gt;
@@ -229,11 +229,11 @@
 
  の略で、後ろに続く式が制約条件を表しているという意味です。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;線形最適化問題とは何か&quot;&gt;線形最適化問題とは何か&lt;&#x2F;h2&gt;
-&lt;p&gt;最適化問題のうち、目的関数と制約条件式が決定変数の１次結合で表されるものを、&lt;strong&gt;線形最適化問題&lt;&#x2F;strong&gt;と呼びます。世の中の様々な最適化問題が線形最適化問題としてモデル化できるということが知られています。また、線形最適化問題はシンプレックス法を用いてコンピューターで高速に（有限時間内で）解くことができます。&lt;&#x2F;p&gt;
+&lt;p&gt;最適化問題のうち、目的関数と制約条件式が決定変数の1次式で表されるものを、&lt;strong&gt;線形最適化問題&lt;&#x2F;strong&gt;と呼びます。世の中の様々な最適化問題が線形最適化問題としてモデル化できるということが知られています。また、線形最適化問題はシンプレックス法を用いてコンピューターで高速に（有限時間内で）解くことができます。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;線形最適化問題の例&quot;&gt;線形最適化問題の例&lt;&#x2F;h3&gt;
 &lt;p&gt;ある牧場では、牛と豚を飼っています。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;牛を１頭出荷すると 
+&lt;li&gt;牛を1頭出荷すると 
 
 
 
@@ -245,7 +245,7 @@
 
 
 
- の利益が得られ、豚を１匹出荷すると 
+ の利益が得られ、豚を1匹出荷すると 
 
 
 
@@ -258,7 +258,7 @@
 
 
  の利益が得られます。&lt;&#x2F;li&gt;
-&lt;li&gt;牛を１頭育てて出荷するには 
+&lt;li&gt;牛を1頭育てて出荷するには 
 
 
 
@@ -270,7 +270,7 @@
 
 
 
- の飼料が必要で、豚を１匹育てて出荷するには 
+ の飼料が必要で、豚を1匹育てて出荷するには 
 
 
 
@@ -296,7 +296,7 @@
 
 
  の飼料を使うことができます。&lt;&#x2F;li&gt;
-&lt;li&gt;牛を１頭育てて出荷するには 
+&lt;li&gt;牛を1頭育てて出荷するには 
 
 
 
@@ -308,7 +308,7 @@
 
 
 
- の水が必要で、豚を１匹育てて出荷するには 
+ の水が必要で、豚を1匹育てて出荷するには 
 
 
 
@@ -335,7 +335,7 @@
 
  の水を使うことができます。&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;このとき、年間の利益を最大にするには１年間に何頭の牛と豚を出荷すれば良いでしょうか？１&lt;&#x2F;p&gt;
+&lt;p&gt;このとき、年間の利益を最大にするには1年間に何頭の牛と豚を出荷すれば良いでしょうか？&lt;&#x2F;p&gt;
 &lt;p&gt;この問題を最適化問題と見て、一年間に出荷する牛の頭数を 
 
 
@@ -381,7 +381,7 @@
 
 &lt;&#x2F;p&gt;
 
-&lt;p&gt;目的関数と制約条件式が決定変数の１次結合で表されているので、この最適化問題は線形最適化問題です。&lt;&#x2F;p&gt;
+&lt;p&gt;目的関数と制約条件式が決定変数の1次式で表されているので、この最適化問題は線形最適化問題です。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;線形最適化問題の標準形&quot;&gt;線形最適化問題の標準形&lt;&#x2F;h2&gt;
 &lt;p&gt;線形最適化問題には&lt;strong&gt;標準形&lt;&#x2F;strong&gt;というものがあります。標準形は解く方法が分かっており、標準形でない問題も標準形に変換することで解くことができます。&lt;&#x2F;p&gt;
 &lt;p&gt;線形最適化問題の標準形は次にように表されます。&lt;&#x2F;p&gt;
@@ -798,7 +798,7 @@ A=
 
 
  の制約条件式を追加します。&lt;&#x2F;p&gt;
-&lt;p&gt;このように負の値をとり得る決定変数がある場合も、２つの正の決定変数の差に置き換えることで標準形へ変換できます。&lt;&#x2F;p&gt;
+&lt;p&gt;このように負の値をとり得る決定変数がある場合も、2つの正の決定変数の差に置き換えることで標準形へ変換できます。&lt;&#x2F;p&gt;
 &lt;h4 id=&quot;5.__の制約条件があるとき&quot;&gt;5. 
 
 
@@ -1020,7 +1020,7 @@ A=
 
 
 
-&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1998&#x2F;Math&#x2F;MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;1&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;&#x2F;mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;2&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;mo&gt;…&lt;&#x2F;mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;6&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;&#x2F;mrow&gt;&lt;annotation encoding=&quot;application&#x2F;x-tex&quot;&gt;y_1, y_2 \dots y_6&lt;&#x2F;annotation&gt;&lt;&#x2F;semantics&gt;&lt;&#x2F;math&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.1944em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;minner&quot;&gt;…&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
+&lt;span class=&quot;katex&quot;&gt;&lt;span class=&quot;katex-mathml&quot;&gt;&lt;math xmlns=&quot;http:&#x2F;&#x2F;www.w3.org&#x2F;1998&#x2F;Math&#x2F;MathML&quot;&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;1&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;&#x2F;mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;2&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;&#x2F;mo&gt;&lt;mo&gt;…&lt;&#x2F;mo&gt;&lt;mo separator=&quot;true&quot;&gt;,&lt;&#x2F;mo&gt;&lt;msub&gt;&lt;mi&gt;y&lt;&#x2F;mi&gt;&lt;mn&gt;6&lt;&#x2F;mn&gt;&lt;&#x2F;msub&gt;&lt;&#x2F;mrow&gt;&lt;annotation encoding=&quot;application&#x2F;x-tex&quot;&gt;y_1, y_2, \dots, y_6&lt;&#x2F;annotation&gt;&lt;&#x2F;semantics&gt;&lt;&#x2F;math&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;katex-html&quot; aria-hidden=&quot;true&quot;&gt;&lt;span class=&quot;base&quot;&gt;&lt;span class=&quot;strut&quot; style=&quot;height:0.625em;vertical-align:-0.1944em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;1&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;2&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;minner&quot;&gt;…&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mpunct&quot;&gt;,&lt;&#x2F;span&gt;&lt;span class=&quot;mspace&quot; style=&quot;margin-right:0.1667em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;mord&quot;&gt;&lt;span class=&quot;mord mathnormal&quot; style=&quot;margin-right:0.03588em;&quot;&gt;y&lt;&#x2F;span&gt;&lt;span class=&quot;msupsub&quot;&gt;&lt;span class=&quot;vlist-t vlist-t2&quot;&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.3011em;&quot;&gt;&lt;span style=&quot;top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;&quot;&gt;&lt;span class=&quot;pstrut&quot; style=&quot;height:2.7em;&quot;&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;sizing reset-size6 size3 mtight&quot;&gt;&lt;span class=&quot;mord mtight&quot;&gt;6&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-s&quot;&gt;​&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;span class=&quot;vlist-r&quot;&gt;&lt;span class=&quot;vlist&quot; style=&quot;height:0.15em;&quot;&gt;&lt;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;&lt;&#x2F;span&gt;
 
 
 
@@ -1083,7 +1083,7 @@ A=
 &lt;li&gt;&lt;strong&gt;最適化問題&lt;&#x2F;strong&gt;は&lt;strong&gt;目的関数&lt;&#x2F;strong&gt;が最大または最小になるような&lt;strong&gt;実行可能解&lt;&#x2F;strong&gt;を求める問題である。&lt;&#x2F;li&gt;
 &lt;li&gt;目的関数の値は&lt;strong&gt;決定変数&lt;&#x2F;strong&gt;により決まる。&lt;&#x2F;li&gt;
 &lt;li&gt;実行可能解とは&lt;strong&gt;制約条件&lt;&#x2F;strong&gt;を満たすような決定変数のことである。&lt;&#x2F;li&gt;
-&lt;li&gt;目的関数と制約条件式が決定変数の１次結合で表される最適化問題を、&lt;strong&gt;線形最適化問題&lt;&#x2F;strong&gt;と呼ぶ。&lt;&#x2F;li&gt;
+&lt;li&gt;目的関数と制約条件式が決定変数の1次式で表される最適化問題を、&lt;strong&gt;線形最適化問題&lt;&#x2F;strong&gt;と呼ぶ。&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;strong&gt;標準形&lt;&#x2F;strong&gt;でない線形最適化問題は標準形に変換することができる。&lt;&#x2F;li&gt;
 &lt;li&gt;線形最適化問題の標準形は、コンピューターで有限時間内に解くことができる。&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
@@ -1126,17 +1126,17 @@ A=
 &lt;p&gt;プログラミングの練習として、碁盤目状に道路が引かれた街の、ある交差点から別の交差点までの最短経路の数を求めてみます。いくつか実装例を考えたので、同じようなことをしている誰かの参考になれば幸いです。使用するプログラミング言語はC言語です。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;やりたいこと&quot;&gt;やりたいこと&lt;&#x2F;h2&gt;
 &lt;p&gt;京都や札幌のような、碁盤目状に道路が引かれた街を考えます。&lt;&#x2F;p&gt;
-&lt;p&gt;具体的には、東西と南北の２方向に道路が並行して走っており、交差点で道路は直交します。また、碁盤目のマスの幅はどこを見ても等しいものとします。&lt;&#x2F;p&gt;
+&lt;p&gt;具体的には、東西と南北の2方向に道路が並行して走っており、交差点で道路は直交します。また、碁盤目のマスの幅はどこを見ても等しいものとします。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;入力&quot;&gt;入力&lt;&#x2F;h3&gt;
-&lt;p&gt;以下の２つの整数が与えられます。どちらの値も碁番目のマスの幅を１とします。また、必ず０以上の値をとります。&lt;&#x2F;p&gt;
+&lt;p&gt;以下の2つの整数が与えられます。どちらの値も碁番目のマスの幅を1とします。また、必ず0以上の値をとります。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;２つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
-&lt;li&gt;２つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;2つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;2つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;出力&quot;&gt;出力&lt;&#x2F;h3&gt;
-&lt;p&gt;与えられた入力から次の１つの整数を出力します。&lt;&#x2F;p&gt;
+&lt;p&gt;与えられた入力から次の1つの整数を出力します。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;２つの交差点間の最短経路数&lt;&#x2F;li&gt;
+&lt;li&gt;2つの交差点間の最短経路数&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h3 id=&quot;例&quot;&gt;例&lt;&#x2F;h3&gt;
 &lt;p&gt;図中の交差点Aと交差点Bの間の最短経路数を考えます。&lt;&#x2F;p&gt;
@@ -1146,20 +1146,20 @@ A=
 &lt;&#x2F;span&gt;&lt;span&gt;--+--+--+--B--+--
 &lt;&#x2F;span&gt;&lt;span&gt;  |  |  |  |  |    ↑北
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;入力は次の２つの整数です。&lt;&#x2F;p&gt;
+&lt;p&gt;入力は次の2つの整数です。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;AB間の東西方向の距離：２&lt;&#x2F;li&gt;
-&lt;li&gt;AB間の南北方向の距離：１&lt;&#x2F;li&gt;
+&lt;li&gt;AB間の東西方向の距離：2&lt;&#x2F;li&gt;
+&lt;li&gt;AB間の南北方向の距離：1&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;出力は次の１つの整数になります。&lt;&#x2F;p&gt;
+&lt;p&gt;出力は次の1つの整数になります。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;AB間の最短経路数：３&lt;&#x2F;li&gt;
+&lt;li&gt;AB間の最短経路数：3&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;h2 id=&quot;組み合わせによる実装例&quot;&gt;組み合わせによる実装例&lt;&#x2F;h2&gt;
 &lt;p&gt;実装例では、変数名・仮引数名を次のように命名しています。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;code&gt;h&lt;&#x2F;code&gt; ：２つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;code&gt;v&lt;&#x2F;code&gt; ：２つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;h&lt;&#x2F;code&gt; ：2つの交差点間の東西方向の距離&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;code&gt;v&lt;&#x2F;code&gt; ：2つの交差点間の南北方向の距離&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;code&gt;n&lt;&#x2F;code&gt; ：組み合わせで、選ぶもとの集合の元の個数&lt;&#x2F;li&gt;
 &lt;li&gt;&lt;code&gt;r&lt;&#x2F;code&gt; ：組み合わせで、選ぶ個数&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
@@ -1248,10 +1248,10 @@ A=
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
 &lt;&#x2F;span&gt;&lt;span&gt;    
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;}
@@ -1312,10 +1312,10 @@ A=
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, combination(h + v, v));
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;}
@@ -1326,10 +1326,10 @@ A=
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;manabitimes.jp&#x2F;math&#x2F;962&quot;&gt;道順の場合の数を求めるテクニック | 高校数学の美しい物語&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
-&lt;p&gt;「書き込み方式」を今回の問題に当てはめる上で重要なポイントは次の２つです。&lt;&#x2F;p&gt;
+&lt;p&gt;「書き込み方式」を今回の問題に当てはめる上で重要なポイントは次の2つです。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;スタート地点から見て、東西方向または南北方向の距離が０であれば、その交差点にたどり着く最短経路数は１である。&lt;&#x2F;li&gt;
-&lt;li&gt;スタート地点から見て、東西方向・南北方向の距離がどちらも０でなければ、その交差点にたどり着く最短経路数は、その直前に通り過ぎうる２つの交差点それぞれにたどり着く最短経路数の和である。&lt;&#x2F;li&gt;
+&lt;li&gt;スタート地点から見て、東西方向または南北方向の距離が0であれば、その交差点にたどり着く最短経路数は1である。&lt;&#x2F;li&gt;
+&lt;li&gt;スタート地点から見て、東西方向・南北方向の距離がどちらも0でなければ、その交差点にたどり着く最短経路数は、その直前に通り過ぎうる2つの交差点それぞれにたどり着く最短経路数の和である。&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;これをそのまま再帰関数で実装したのが、次のコードです。&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
@@ -1342,10 +1342,10 @@ A=
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; h, v;
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の東西方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;h);
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の南北方向の距離：&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;); fflush(stdout); scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;v);
 &lt;&#x2F;span&gt;&lt;span&gt;
-&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;２つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, route(h, v));
+&lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;2つの交差点間の最短経路数：&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, route(h, v));
 &lt;&#x2F;span&gt;&lt;span&gt;
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;}
@@ -1375,7 +1375,7 @@ A=
 &lt;p&gt;最近って書いたけど、嘘です。最近に限らず前から聴いてます。まあそれはともかく &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;whoosrockq&quot;&gt;whoo さん&lt;&#x2F;a&gt;の曲はどれも本当に良いのでぜひ聴いてください！&lt;&#x2F;p&gt;
 &lt;p&gt;音楽を聴いていたらもう少し書く元気が出てきた！&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;年末に向けて&quot;&gt;年末に向けて&lt;&#x2F;h2&gt;
-&lt;p&gt;今は10月中旬なので、実はもうあと２ヶ月ちょいで今年も終わりです。でも自分にはまだ全然そんな実感がありません。毎年そうだけど、全然気が付かないうちに11月になり、12月になって、一年が終わってしまいます。&lt;&#x2F;p&gt;
+&lt;p&gt;今は10月中旬なので、実はもうあと2ヶ月ちょいで今年も終わりです。でも自分にはまだ全然そんな実感がありません。毎年そうだけど、全然気が付かないうちに11月になり、12月になって、一年が終わってしまいます。&lt;&#x2F;p&gt;
 &lt;p&gt;とはいえ人間含め動物たちは季節の変化に敏感なもので、気温や日の入り時刻が変化するとともに、寒い冬が近づいているということを本能的に感じ取ってしまいますよね。そんな現実から目を背けたくて、ハロウィーンとか学校の文化祭とかのイベントを必死でやっているのかもなぁ、そういうイベントに夢中になっているからあっと言う間に時間が過ぎていくのかもなぁ、と思う今日この頃です。（「今日この頃です」←便利フレーズ）&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;しめくくり&quot;&gt;しめくくり&lt;&#x2F;h2&gt;
 &lt;p&gt;来週から気温がガクッと下がる、ということを人から聞いたので、風邪をひかないように気をつけたいですね。それでは良い週末を！&lt;&#x2F;p&gt;
@@ -1418,9 +1418,9 @@ A=
 &lt;p&gt;以下が switch 文のフォールスルーを使った「日付を入力するとその日がその年の何日目かを出力するプログラム」の実装例です。（うるう年は考慮していません）&lt;&#x2F;p&gt;
 &lt;pre data-lang=&quot;c&quot; style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot; class=&quot;language-c &quot;&gt;&lt;code class=&quot;language-c&quot; data-lang=&quot;c&quot;&gt;&lt;span style=&quot;color:#9b9b9b;&quot;&gt;#include &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;lt;stdio.h&amp;gt;
 &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span&gt;main(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;void&lt;&#x2F;span&gt;&lt;span&gt;) {
-&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; month, date;
+&lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; month, day;
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span&gt; count = &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
-&lt;&#x2F;span&gt;&lt;span&gt;    scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d %d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;month, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;date);
+&lt;&#x2F;span&gt;&lt;span&gt;    scanf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d %d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;month, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span&gt;day);
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;switch &lt;&#x2F;span&gt;&lt;span&gt;(month - &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;) {
 &lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;11&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;30&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;10&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
@@ -1434,7 +1434,7 @@ A=
 &lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;2&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;28&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;case &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;1&lt;&#x2F;span&gt;&lt;span&gt;: count += &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;31&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;    }
-&lt;&#x2F;span&gt;&lt;span&gt;    count += date;
+&lt;&#x2F;span&gt;&lt;span&gt;    count += day;
 &lt;&#x2F;span&gt;&lt;span&gt;    printf(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#b4cea8;&quot;&gt;%d&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e3bbab;&quot;&gt;\n&lt;&#x2F;span&gt;&lt;span style=&quot;color:#d69d85;&quot;&gt;&amp;quot;&lt;&#x2F;span&gt;&lt;span&gt;, count);
 &lt;&#x2F;span&gt;&lt;span&gt;    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#569cd6;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#b5cea8;&quot;&gt;0&lt;&#x2F;span&gt;&lt;span&gt;;
 &lt;&#x2F;span&gt;&lt;span&gt;}
