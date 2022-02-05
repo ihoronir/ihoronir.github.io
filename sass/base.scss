@@ -1,3 +1,5 @@
+@import "_mixin";
+
 * {
 	box-sizing: border-box;
 }
@@ -61,18 +63,6 @@ blockquote {
 	}
 }
 
-
-/* Remove all animations and transitions for people that prefer not to see them */
-/* 見たくない人用に、すべてのアニメーションとトランジションを削除 */
-@media (prefers-reduced-motion: reduce) {
-	* {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
-}
-
 html {
 	//background-color: #404040;
 	background: #060606;//linear-gradient(0deg, #0d0d0d, #0d0d0d);
@@ -89,22 +79,19 @@ body {
 	line-break: strict;
 	margin: 0 auto;
 	box-shadow: 0 0 100px 100px #101010, 0 0 1px 1px #fff;
-	border-left: #303030 1px solid;
-	border-right: #303030 1px solid;
 	//scroll-behavior: smooth;
 	//text-rendering: optimizeSpeed;
-}
-
-@media screen and (min-width: 1236px) {
-	body {
+	@include mq(sm) {
+		border-left: #303030 1px solid;
+		border-right: #303030 1px solid;
+		box-sizing: content-box;
+	}
+	@include mq(md) {
 		max-width: 1236px;
 	}
-}
-
-@media screen and (min-width: 1536px) {
-	body {
+	@include mq(lg) {
 		display: grid;
-		grid-template-columns: 311px 1fr;
+		grid-template-columns: 301px 1fr;
 		grid-template-rows: 40px max-content 100px;
 		max-width: 1536px;
 	}
@@ -116,23 +103,31 @@ body {
 	border-bottom: #303030 1px solid;
 	padding: 5px 20px;
 	line-height: 30px;
+	@include mq(lg) {
+		grid-column: 2 / 3;
+		grid-row: 1 / 2;
+	}
 }
 
 .base_main {
 	background: #0e0e0e;
-}
-
-
-@media screen and (min-width: 1536px) {
-	.base_breadcrumb {
-		grid-column: 2 / 3;
-		grid-row: 1 / 2;
-	}
-	.base_main {
+	@include mq(lg) {
 		grid-column: 2 / 3;
 		grid-row: 2 / 3;
 	}
 }
 
 @import "_base_footer.scss";
+
+/* Remove all animations and transitions for people that prefer not to see them */
+/* 見たくない人用に、すべてのアニメーションとトランジションを削除 */
+/*
+@media (prefers-reduced-motion: reduce) {
+	* {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}*/
 

@@ -1,16 +1,39 @@
-@media screen and (min-width: 1236px) {
-	.entry {
+@import "_mixin";
+
+.entry {
+	@include mq(md) {
 		display: grid;
-		grid-template-columns: 1fr 347px;
+		grid-template-columns: 1fr 337px;
 		grid-template-rows: max-content;
 	}
 }
 
 //////////////////////// Article ////////////////////////
 
+
 .entry_article {
 	padding: 24px 12px;
 	overflow: hidden;
+}
+
+@media screen and (min-width: 720px) {
+	.entry_article {
+		padding: 32px 38px;
+	}
+}
+
+.entry_article {
+	@include mq(sm) {
+		padding: 32px 0;
+		width: 810px;
+		margin: 0 auto;
+	}
+	@include mq(md) {
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+		padding: 40px 0;
+		//padding: 40px 38px;
+	}
 }
 
 .entry_article_header {
@@ -24,20 +47,6 @@
 	padding-bottom: 20px;
 	margin-bottom: 20px;
 	border-bottom: #aaaaaa 3px solid;
-}
-
-@media screen and (min-width: 720px) {
-	.entry_article {
-		padding: 32px 38px;
-	}
-}
-
-@media screen and (min-width: 1236px) {
-	.entry_article {
-		grid-column: 1 / 2;
-		grid-row: 1 / 2;
-		padding: 40px 38px;
-	}
 }
 
 .entry_article {
@@ -78,7 +87,8 @@
 	display: none;
 }
 
-@media screen and (min-width: 1236px) {
+//@media screen and (min-width: calc(1236px + 20px)) {
+@include mq(md) {
 	.entry_ref {
 		display: block;
 		grid-column: 2 / 3;

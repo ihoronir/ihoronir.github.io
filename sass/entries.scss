@@ -1,3 +1,5 @@
+@import "_mixin";
+
 .entries {
 	overflow: hidden;
 }
@@ -34,7 +36,8 @@
 		padding: 12px 50px;
 	}
 }
-@media screen and (min-width: 1236px) {
+
+@include mq(md) {
 	.entries_header {
 		h1 {
 			font-size: 50px;
@@ -42,7 +45,7 @@
 	}
 }
 
-@media screen and (min-width: 1536px) {
+@include mq(lg) {
 	.entries_header {
 		h1 {
 			padding: 68px 38px 108px;
@@ -75,7 +78,7 @@
 	}
 }
 
-@media screen and (min-width: 1236px) {
+@include mq(md) {
 	.entries_Article {
 		margin: 40px 38px;
 	}
