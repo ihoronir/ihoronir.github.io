@@ -1,39 +1,6 @@
-@import "_mixin";
-
-.entry {
-	@include mq(md) {
-		display: grid;
-		grid-template-columns: 1fr 337px;
-		grid-template-rows: max-content;
-	}
-}
-
-//////////////////////// Article ////////////////////////
-
-
 .entry_article {
 	padding: 24px 12px;
 	overflow: hidden;
-}
-
-@media screen and (min-width: 720px) {
-	.entry_article {
-		padding: 32px 38px;
-	}
-}
-
-.entry_article {
-	@include mq(sm) {
-		padding: 32px 0;
-		width: 810px;
-		margin: 0 auto;
-	}
-	@include mq(md) {
-		grid-column: 1 / 2;
-		grid-row: 1 / 2;
-		padding: 40px 0;
-		//padding: 40px 38px;
-	}
 }
 
 .entry_article_header {
@@ -50,7 +17,7 @@
 }
 
 .entry_article {
-	p, ul, ol, pre, blockquote, iframe {
+	p, ul, ol, pre, blockquote, iframe, img {
 		margin-bottom: 24px;
 	}
 
@@ -64,31 +31,46 @@
 		border-bottom: 3px solid #787877;
 	}
 
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+	}
+
 	/**:first-child {
 		margin-top: 0;
-	}+*/
-
-	code {
-		border: #303030 1px solid;
-	}
-
-	pre {
-		border: #303030 1px solid;
-		code {border: none}
-	}
-
+	}*/
 }
 
 .katex-display { overflow: auto hidden }
-
-//////////////////////// Ref ////////////////////////
 
 .entry_ref {
 	display: none;
 }
 
-//@media screen and (min-width: calc(1236px + 20px)) {
-@include mq(md) {
+.entry_ref_ad_1, .entry_ref_ad_2 {
+	display: none;
+}
+
+@media screen and (min-width: 760px) {
+	.entry_article {
+		padding: 32px 46px;
+	}
+}
+
+@media screen and (min-width: 1245px) {
+	.entry {
+		display: grid;
+		grid-template-columns: 1fr 301px;
+		grid-template-rows: max-content;
+	}
+
+	.entry_article {
+		grid-column: 1 / 2;
+		grid-row: 1 / 2;
+		padding: 40px 46px;
+	}
+
 	.entry_ref {
 		display: block;
 		grid-column: 2 / 3;
@@ -133,6 +115,24 @@
 
 	.entry_ref_lists_List_list_Item_link, .entry_ref_toc_list_Item_link, .entry_ref_toc_list_Item_list_Item_link {
 		color: inherit;
+	}
+
+	.entry_ref_ad_2 {
+		display: block;
+	}
+}
+
+@media screen and (min-width: 1281px) {
+	.entry {
+		grid-template-columns: 1fr 337px;
+	}
+
+	.entry_ref_ad_1 {
+		display: block;
+	}
+
+	.entry_ref_ad_2 {
+		display: none;
 	}
 }
 

@@ -1,0 +1,15 @@
+{% extends "_base.html" %}
+
+{% block base_config %}
+{% set base_config_now = "music" %}
+{% set base_config_title = "音楽" %}
+{% set base_config_stylesheets = ["/top.css"] %}
+{% endblock base_config %}
+
+{% block base_main %}
+<main class="base_main top">
+	<article class="top_article">
+		{{- page.content | safe}}
+	</article>
+</main>
+{% endblock base_main %}
