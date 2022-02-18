@@ -1,7 +1,6 @@
 +++
 title = "【Arch Linux】systemd-bootでXBOOTLDRを使ってみた"
 slug = "LWnHhSN7"
-updated = "2022-02-18"
 +++
 
 ## 経緯
