@@ -50,7 +50,7 @@
 &lt;h3 id=&quot;ファイルの引っ越し&quot;&gt;ファイルの引っ越し&lt;&#x2F;h3&gt;
 &lt;p&gt;EFI パーティション（ &lt;code&gt;&#x2F;efi&lt;&#x2F;code&gt; ）直下の &lt;code&gt;initramfs-linux-fallback.img&lt;&#x2F;code&gt;, &lt;code&gt;initramfs-linux.img&lt;&#x2F;code&gt;, &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt;, &lt;code&gt;vmlinuz-linux&lt;&#x2F;code&gt; の4つのファイルを XBOOTLDR パーティション（ &lt;code&gt;&#x2F;boot&lt;&#x2F;code&gt; ）直下に移動させました。（ &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt; は CPU のマイクロコードで、CPUメーカーによって名前が違います。 &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B3%E3%83%BC%E3%83%89&quot;&gt;ArchWiki&lt;&#x2F;a&gt; にマイクロコードに関する詳しい情報があります。）&lt;&#x2F;p&gt;
 &lt;p&gt;また、個別の Linux 用のローダー設定ファイル（ &lt;code&gt;&#x2F;efi&#x2F;loader&#x2F;entries&#x2F;*.conf&lt;&#x2F;code&gt; ）は EFI パーティションから、 XBOOTLDR パーティション内（ &lt;code&gt;&#x2F;boot&#x2F;loader&#x2F;entries&#x2F;*.conf&lt;&#x2F;code&gt; ）に移動させました。&lt;&#x2F;p&gt;
-&lt;h3 id=&quot;systemd-bootのインストール&quot;&gt;systemd-bootのインストール&lt;&#x2F;h3&gt;
+&lt;h3 id=&quot;systemd-boot_のインストール&quot;&gt;systemd-boot のインストール&lt;&#x2F;h3&gt;
 &lt;p&gt;次のコマンドで、 systemd-boot 関連のファイルを EFI パーティションと XBOOTLDR パーティションにインストールしました。&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;# bootctl --esp-path=&#x2F;efi --boot-path=&#x2F;boot install
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
@@ -86,7 +86,7 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;$ bootctl list
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
-&lt;p&gt;確認が終わったら、パソコンを再起動しました。カーネルイメージや initramfs を ESP パーティションから分離しつつ、 systemd-boot を使って無事にデュアルブート環境を構成することができていました。&lt;&#x2F;p&gt;
+&lt;p&gt;確認が終わったら、パソコンを再起動しました。カーネルイメージや initramfs を ESP パーティションから分離しつつ、 systemd-boot を使って無事に Windows と ArchLinux のデュアルブート環境を構成することができていました。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;感想&quot;&gt;感想&lt;&#x2F;h2&gt;
 &lt;p&gt;XBOOTLDR パーティションは聞いたこともなかったので、うまく動作するか不安でしたが、意外とすんなり使うことができたので驚きました。 Windows とデュアルブートしている関係で、 ESP パーティションにカーネルイメージや initramfs が入り切らないという人にとっては、とても重宝する機能だと思いました。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;参考にしたページ&quot;&gt;参考にしたページ&lt;&#x2F;h2&gt;
@@ -164,7 +164,7 @@
     width=&quot;4608&quot; height=&quot;3456&quot; alt=&quot;船&quot;
     decoding=&quot;async&quot;&gt;
 &lt;&#x2F;a&gt;&lt;h2 id=&quot;シドニー&quot;&gt;シドニー&lt;&#x2F;h2&gt;
-&lt;p&gt;シドニーで撮った写真です。&lt;&#x2F;p&gt;
+&lt;p&gt;修学旅行で行ったシドニーで撮った写真です。&lt;&#x2F;p&gt;
 
 
 
