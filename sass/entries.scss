@@ -1,27 +1,86 @@
 @import "_mixin";
 
 .entries {
+	padding: 24px 12px;
+}
+
+.entries_header {
+	text-align: center;
+	margin-bottom: 24px;
+	//border-bottom: #aaaaaa 3px solid;
+	grid-column: 1 / 4;
+	//background: #000;
+	//border: #303030 1px solid;
+	//background: linear-gradient(145deg,  #00ff62, #00a2ff);
+}
+
+.entries_articles_Article {
+	//margin: 70px 40px;
+	//min-height: 400px;
+	background: #161616;
+	border: #303030 1px solid;
+	padding: 12px 16px;
+	margin-bottom: 16px;
+	//box-shadow: 0 0 2px 2px #07070a;
+}
+
+
+.entries_articles_Article_title {
+	//padding-bottom: 4px;
+	margin-bottom: 20px;
+	//min-height: 98.2px;
+	//border-bottom: #aaaaaa 3px solid;
+
+}
+
+@media screen and (min-width: 760px) {
+	.entries_header_title {
+		font-size: 40px;
+	}
+}
+
+@media screen and(min-width: 926px) {
+	.entries {
+		padding: 40px 46px;
+	}
+	
+	.entries_header {
+		margin-bottom: 50px;
+	}
+
+	.entries_articles {
+		display: grid;
+		grid-auto-flow: dense;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows:  max-content max-content max-content max-content;
+		gap: 20px 18px;
+	}
+
+	.entries_articles_Article {
+		margin: 0;
+	}
+}
+
+@media screen and (min-width: 1245px) {
+
+	.entries_articles {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+/*
+.entries {
 	overflow: hidden;
 }
 
 .entries_header {
 	padding: 12px 16px;
 
-	nav {
-		line-height: 37px;
-		border-bottom: /*#585858*/ #aaaaaa 3px solid;
-		a {
-			color: white;
-			text-decoration: none;
-			&:hover {
-				text-decoration: underline;
-			}
-		}
-	}
-
 	h1 {
+		margin: 0;
 		padding: 25px 0 42px;
-		text-align: center;
+		//text-align: center;
+		background: #222;
 		font-size: 36px;
 		line-height: 60px;
 		span {
@@ -32,9 +91,6 @@
 }
 
 @media screen and (min-width: 720px) {
-	.entries_header {
-		padding: 12px 50px;
-	}
 }
 
 @include mq(md) {
@@ -56,11 +112,10 @@
 .entries_Article {
 	background: #171717;
 	border-left: 5px #0044ff solid;
-	margin: 24px 12px;
 	h1 {
 		font-size: 24px;
 	}
-	//max-width: 810px;
+	max-width: 300px;
 	a {
 		display: block;
 		padding: 32px 20px;
@@ -72,14 +127,4 @@
 	}
 }
 
-@media screen and (min-width: 720px) {
-	.entries_Article {
-		margin: 32px 38px;
-	}
-}
-
-@include mq(md) {
-	.entries_Article {
-		margin: 40px 38px;
-	}
-}
+*/

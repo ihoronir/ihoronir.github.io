@@ -8,13 +8,16 @@
 
 {% set base_config_stylesheets = ["/base.css"] | concat(with=base_config_stylesheets) %}
 
+{% set page_or_section = page | default(value = section) %}
+{% set description = page_or_section.description | default(value = "ihoronir.github.io") %}
+
 <html lang="ja">
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>{{ base_config_title }} - ihoronir.github.io</title>
-		<!--<meta name="description" content="">-->
+		<meta name="description" content="{{description}}">
 
 		{% for stylesheet in base_config_stylesheets %}
 		<link rel="stylesheet" href="{{ stylesheet | safe }}">
@@ -97,9 +100,8 @@
 		</header>
 
 		<nav class="base_breadcrumb">現在地：
-			{% set page_or_section = page | default(value = section) %}
 			{% for ancestor_path in page_or_section.ancestors %}
-			{% set section = get_section(path = ancestor_path) %}
+			{%     set section = get_section(path = ancestor_path) %}
 			<a href="{{section.path}}">{{ section.title }}</a> / 
 			{% endfor %}
 			<a href="{{page_or_section.path}}">{{ page_or_section.title }}</a>

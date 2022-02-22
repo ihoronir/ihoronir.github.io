@@ -11,11 +11,30 @@
 	<header class="entries_header">
 		<h1 class="entries_header_title"><span>{{ section.title }}</span></h1>
 	</header>
-	{% for page in section.pages %}
-	<article class="entries_Article">
-		<h1><a href="{{ page.path | safe }}">{{ page.date }} - {{ page.title }}</a></h1>
-	</article>
-	{% endfor %}
+	<section class="entries_articles">
+		{#
+		<article style="grid-column-end: span 2;" class="entries_articles_Article">
+			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ section.pages[3].path | safe }}">{{ section.pages[3].title }}</a></h2>
+			<p>{{section.pages[3].description}}<br>
+				(Date: {{ section.pages[3].date }})</p>
+		</article>
+
+		<article class="entries_articles_Article">
+			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ section.pages[4].path | safe }}">{{ section.pages[4].title }}</a></h2>
+			<p>{{section.pages[4].description}}<br>
+				(Date: {{ section.pages[4].date }})</p>
+		</article>
+		#}
+
+		{% for page in section.pages %}
+		<article class="entries_articles_Article">
+			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ page.path | safe }}">{{ page.title }}</a></h2>
+			<p>{{page.description}}<br>
+				(Date: {{ page.date }})</p>
+		</article>
+		{% endfor %}
+
+	</section>
 </main>
 {% endblock base_main %}
 

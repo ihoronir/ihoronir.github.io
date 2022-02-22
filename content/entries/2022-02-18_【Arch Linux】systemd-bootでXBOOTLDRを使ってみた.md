@@ -1,6 +1,7 @@
 +++
 title = "【Arch Linux】systemd-bootでXBOOTLDRを使ってみた"
 slug = "LWnHhSN7"
+description = "あまり知られていない、 systemd-boot の XBOOTLDR パーティションを使った設定方法を紹介します。 XBOOTLDR パーティションを使えば、 ESP パーティションのサイズが極端に小さい環境でも、 systemd-boot を設定することができます。"
 +++
 
 ## 経緯
@@ -71,7 +72,7 @@ EFI パーティション（ `/efi` ）直下の `initramfs-linux-fallback.img`,
 
 また、個別の Linux 用のローダー設定ファイル（ `/efi/loader/entries/*.conf` ）は EFI パーティションから、 XBOOTLDR パーティション内（ `/boot/loader/entries/*.conf` ）に移動させました。
 
-### systemd-bootのインストール
+### systemd-boot のインストール
 
 次のコマンドで、 systemd-boot 関連のファイルを EFI パーティションと XBOOTLDR パーティションにインストールしました。
 
@@ -125,7 +126,7 @@ $ bootctl status
 $ bootctl list
 ```
 
-確認が終わったら、パソコンを再起動しました。カーネルイメージや initramfs を ESP パーティションから分離しつつ、 systemd-boot を使って無事にデュアルブート環境を構成することができていました。
+確認が終わったら、パソコンを再起動しました。カーネルイメージや initramfs を ESP パーティションから分離しつつ、 systemd-boot を使って無事に Windows と ArchLinux のデュアルブート環境を構成することができていました。
 
 ## 感想
 
