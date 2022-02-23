@@ -8,8 +8,18 @@
 
 {% set base_config_stylesheets = ["/base.css"] | concat(with=base_config_stylesheets) %}
 
-{% set page_or_section = page | default(value = section) %}
-{% set description = page_or_section.description | default(value = "ihoronir.github.io") %}
+{% set page_or_section = page | default(value = section)                                                         %}
+{% set description = page_or_section.description | default(value = "ihoronir.github.io")                         %}
+{% set_global og_image = get_url(path = "/cover.jpg")                                                            %}
+{% if page_or_section.extra.image                                                                                %}
+{% 	   for asset in page_or_section.assets                                                                       %}
+{% 	       if asset is matching(page_or_section.extra.image)                                                     %}
+{%             set image = resize_image(path = asset, width =  832, op = "fit_width", format="webp", quality=75) %}
+{% 	           set_global og_image = image.url                                                                   %}
+{% 	           break                                                                                             %}
+{% 	       endif                                                                                                 %}
+{% 	   endfor                                                                                                    %}
+{% endif                                                                                                         %}
 
 <html lang="ja">
 	<head>
@@ -28,12 +38,13 @@
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
 		-->
+		<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
 
 		<meta property="og:title" content="{{ base_config_title }}">
 		<meta property="og:type" content="website">
 		<meta property="og:site_name" content="ihoronir.github.io">
 		<meta property="og:url" content="{{ current_url | safe }}">
-		<meta property="og:image" content="{{ get_url(path = "/cover.jpg") }}">
+		<meta property="og:image" content="{{ og_image }}">
 		<meta property="og:locale" content="ja_JP">
 		<meta name="twitter:card" content="summary">
 		<meta name="twitter:creator" content="@ihoronir">
