@@ -11,7 +11,9 @@
 {% set page_or_section = page | default(value = section)                                                         %}
 {% set description = page_or_section.description | default(value = "ihoronir.github.io")                         %}
 {% set_global og_image = get_url(path = "/cover.jpg")                                                            %}
+{% set_global twitter_card = "summary"                                                                           %}
 {% if page_or_section.extra.image                                                                                %}
+{%     set_global twitter_card = "summary_large_image"                                                           %}
 {% 	   for asset in page_or_section.assets                                                                       %}
 {% 	       if asset is matching(page_or_section.extra.image)                                                     %}
 {%             set image = resize_image(path = asset, width =  832, op = "fit_width", format="webp", quality=75) %}
@@ -46,7 +48,7 @@
 		<meta property="og:url" content="{{ current_url | safe }}">
 		<meta property="og:image" content="{{ og_image }}">
 		<meta property="og:locale" content="ja_JP">
-		<meta name="twitter:card" content="summary">
+		<meta name="twitter:card" content="{{ twitter_card }}">
 		<meta name="twitter:creator" content="@ihoronir">
 		<!--
 		<meta name="twitter:site" content="@ihoronir">
