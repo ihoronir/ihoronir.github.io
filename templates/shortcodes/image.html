@@ -1,4 +1,4 @@
-{% set_global image = "" %}
+{% import "_macros.html" as macros %}
 
 {% for asset in page.assets         %}
 {%     if asset is matching(src)    %}
@@ -7,32 +7,12 @@
 {%     endif                        %}
 {% endfor                           %}
 
-{% set_global quality = 100 %}
-
-{% if image is matching("[.](jpg|jpeg|JPG|JPEG)$") %}
-{%     set image_2496 = resize_image(path = image, width = 2496, op = "fit_width", format="webp", quality=75) %}
-{%     set image_1664 = resize_image(path = image, width = 1664, op = "fit_width", format="webp", quality=75) %}
-{%     set image_1248 = resize_image(path = image, width = 1248, op = "fit_width", format="webp", quality=75) %}
-{%     set image_832  = resize_image(path = image, width =  832, op = "fit_width", format="webp", quality=75) %}
-{%     set image_624  = resize_image(path = image, width =  624, op = "fit_width", format="webp", quality=75) %}
-{%     set image_416  = resize_image(path = image, width =  416, op = "fit_width", format="webp", quality=75) %}
-{%     set image_208  = resize_image(path = image, width =  208, op = "fit_width", format="webp", quality=75) %}
-{% else                                            %}
-{%     set image_2496 = resize_image(path = image, width = 2496, op = "fit_width", format="webp") %}
-{%     set image_1664 = resize_image(path = image, width = 1664, op = "fit_width", format="webp") %}
-{%     set image_1248 = resize_image(path = image, width = 1248, op = "fit_width", format="webp") %}
-{%     set image_832  = resize_image(path = image, width =  832, op = "fit_width", format="webp") %}
-{%     set image_624  = resize_image(path = image, width =  624, op = "fit_width", format="webp") %}
-{%     set image_416  = resize_image(path = image, width =  416, op = "fit_width", format="webp") %}
-{%     set image_208  = resize_image(path = image, width =  208, op = "fit_width", format="webp") %}
-{% endif                                           %}
-
 {% set meta = get_image_metadata(path=image) %}
 
 <a href="{{src}}" target="_blank">
-    <img src="{{ image_832.url }}"
+    <img
     sizes="(min-width: 924px) 832px, (min-width: 760px) calc(100vw - 92px), calc(100vw - 24px)"
-    srcset="{{ image_208.url }} 208w, {{ image_416.url }} 416w, {{ image_624.url }} 624w, {{ image_832.url }} 832w, {{ image_1248.url }} 1248w, {{ image_1664.url }} 1664w, {{ image_2496.url }} 2496w"
+    srcset="{{ macros::generate_srcset(src=image) }}"
     width="{{meta.width}}" height="{{meta.height}}" alt="{{alt}}"
     {% if nth <= 2 %}decoding="async"{% else %}loading="lazy"{% endif %}>
 </a>

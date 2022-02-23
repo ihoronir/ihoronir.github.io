@@ -1,0 +1,28 @@
+{% macro _generate_srcset(src) %}
+{% set widths = [208, 312, 416, 624, 832, 936, 1248, 1664, 2496] %}
+{% set meta = get_image_metadata(path=src)                       %}
+{% if src is matching("[.](jpg|jpeg|JPG|JPEG)$")                                                                  %}
+{%     for width in widths                                                                                        %}
+{%         if meta.width > width                                                                                  %}
+{%             set image  = resize_image(path = src, width =  width, op = "fit_width", format="webp", quality=75) %}
+{%             if loop.index != 1                                                                                 %}
+,
+{%             endif                                                                                              %}
+{{ image.url | safe }} {{ width }}w
+{%         endif                                                                                                  %}
+{%     endfor                                                                                                     %}
+{% else                                                                                                           %}
+{%     for width in widths                                                                                        %}
+{%         if meta.width > width                                                                                  %}
+{%             set image  = resize_image(path = src, width =  width, op = "fit_width", format="webp")             %}
+{%             if loop.index != 1                                                                                 %}
+,
+{%             endif                                                                                              %}
+{{ image.url | safe }} {{ width }}w
+{%         endif                                                                                                  %}
+{%     endfor                                                                                                     %}
+{% endif                                                                                                          %}
+{% endmacro generate_srcset %}
+
+{% macro generate_srcset(src) %}{{ self::_generate_srcset(src=src) | replace(from="
+", to="") }}{% endmacro generate_srcset %}

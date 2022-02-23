@@ -1,39 +1,42 @@
+{% import "_macros.html" as macros %}
 {% extends "_base.html" %}
 
-{% block base_config %}
-{% set base_config_now = "entry" %}
-{% set base_config_title = section.title %}
+{% block base_config                              %}
+{% set base_config_now = "entry"                  %}
+{% set base_config_title = section.title          %}
 {% set base_config_stylesheets = ["/entries.css"] %}
-{% endblock base_config %}
+{% endblock base_config                           %}
 
 {% block base_main %}
 <main class="base_main entries">
 	<header class="entries_header">
-		<h1 class="entries_header_title"><span>{{ section.title }}</span></h1>
+		<h1 class="entries_header_title">{{ section.title }}</h1>
 	</header>
 	<section class="entries_articles">
-		{#
-		<article style="grid-column-end: span 2;" class="entries_articles_Article">
-			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ section.pages[3].path | safe }}">{{ section.pages[3].title }}</a></h2>
-			<p>{{section.pages[3].description}}<br>
-				(Date: {{ section.pages[3].date }})</p>
-		</article>
-
-		<article class="entries_articles_Article">
-			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ section.pages[4].path | safe }}">{{ section.pages[4].title }}</a></h2>
-			<p>{{section.pages[4].description}}<br>
-				(Date: {{ section.pages[4].date }})</p>
-		</article>
-		#}
-
-		{% for page in section.pages %}
-		<article class="entries_articles_Article">
-			<h2 class="entries_articles_Article_title"><a class="entries_articles_Article_title_link" href="{{ page.path | safe }}">{{ page.title }}</a></h2>
-			<p>{{page.description}}<br>
-				(Date: {{ page.date }})</p>
+		{% set_global cnt = 0            %}
+		{% for page in section.pages     %}
+		{%     set_global cnt = cnt + 1  %}
+		<article class="entries_articles_Article{% if page.extra.image %} entries_articles_Article-wide{% endif %}">
+			<h2 class="entries_articles_Article_title{% if page.extra.image %} entries_articles_Article_title-wide{% endif %}">
+				<a class="entries_articles_Article_title_link" href="{{ page.path | safe }}">{{ page.title }}</a>
+			</h2>
+			{% if (page.extra.image)                          %}
+			{%     for asset in page.assets                   %}
+			{%         if asset is matching(page.extra.image) %}
+			{%             set_global image = asset           %}
+			{%             break                              %}    
+			{%         endif                                  %}
+			{%     endfor                                     %}
+			{%     set meta = get_image_metadata(path=image)  %}
+			<img class="entries_articles_Article-wide_img"
+			sizes="(min-width: 760px) 312px, calc(100vw - 57px)"
+			srcset="{{ macros::generate_srcset(src=image) }}"
+			width="{{meta.width}}" height="{{meta.height}}" alt="{{ page.title }}"
+			{% if cnt <= 6 %}decoding="async"{% else %}loading="lazy"{% endif %}>
+			{% endif %}
+			<p>{{page.description}}<br><a href="{{ page.path | safe }}">Read More</a> (Date: {{ page.date }})</p>
 		</article>
 		{% endfor %}
-
 	</section>
 </main>
 {% endblock base_main %}
