@@ -29,7 +29,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<title>{{ base_config_title }} - ihoronir.github.io</title>
-		<meta name="description" content="{{description}}">
+		<meta name="description" content="{{ description }}">
 
 		{% for stylesheet in base_config_stylesheets %}
 		<link rel="stylesheet" href="{{ stylesheet | safe }}">
@@ -43,6 +43,7 @@
 		<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
 
 		<meta property="og:title" content="{{ base_config_title }}">
+		<meta property="og:description" content="{{ description }}">
 		<meta property="og:type" content="website">
 		<meta property="og:site_name" content="ihoronir.github.io">
 		<meta property="og:url" content="{{ current_url | safe }}">
@@ -52,7 +53,6 @@
 		<meta name="twitter:creator" content="@ihoronir">
 		<!--
 		<meta name="twitter:site" content="@ihoronir">
-		<meta property="og:description" content="">
 		-->
 		{% if config.mode == "Build" %}
 		<!-- Global site tag (gtag.js) - Google Analytics -->
