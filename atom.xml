@@ -37,7 +37,7 @@
 &lt;h3 id=&quot;ファイルシステムのマウント&quot;&gt;ファイルシステムのマウント&lt;&#x2F;h3&gt;
 &lt;p&gt;Arch Linux を起動して、 &lt;code&gt;&#x2F;boot&lt;&#x2F;code&gt; にマウントしていた ESP パーティションを &lt;code&gt;&#x2F;efi&lt;&#x2F;code&gt; にマウントし直し、代わりに XBOOTLDR パーティションを &lt;code&gt;&#x2F;boot&lt;&#x2F;code&gt; にマウントしました。&lt;&#x2F;p&gt;
 &lt;p&gt;次に、 &lt;code&gt;&#x2F;etc&#x2F;fstab&lt;&#x2F;code&gt; を編集して、次回以降起動したときに自動で現在の構成になるように設定しました。&lt;&#x2F;p&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Fstab&quot;&gt;ArchWiki&lt;&#x2F;a&gt; に fstab の書き方に関する詳しい情報があります。私の環境では次のようにしてみました。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Fstab&quot;&gt;ArchWiki&lt;&#x2F;a&gt; に fstab の書き方に関する詳しい情報があります。私の環境では次のようにしてみました。&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;# Static information about the filesystems.
 &lt;&#x2F;span&gt;&lt;span&gt;# See fstab(5) for details.
 &lt;&#x2F;span&gt;&lt;span&gt;
@@ -48,14 +48,14 @@
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;p&gt;個人的に fstab では UUID を使う派です。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;ファイルの引っ越し&quot;&gt;ファイルの引っ越し&lt;&#x2F;h3&gt;
-&lt;p&gt;EFI パーティション（ &lt;code&gt;&#x2F;efi&lt;&#x2F;code&gt; ）直下の &lt;code&gt;initramfs-linux-fallback.img&lt;&#x2F;code&gt;, &lt;code&gt;initramfs-linux.img&lt;&#x2F;code&gt;, &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt;, &lt;code&gt;vmlinuz-linux&lt;&#x2F;code&gt; の4つのファイルを XBOOTLDR パーティション（ &lt;code&gt;&#x2F;boot&lt;&#x2F;code&gt; ）直下に移動させました。（ &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt; は CPU のマイクロコードで、CPUメーカーによって名前が違います。 &lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B3%E3%83%BC%E3%83%89&quot;&gt;ArchWiki&lt;&#x2F;a&gt; にマイクロコードに関する詳しい情報があります。）&lt;&#x2F;p&gt;
+&lt;p&gt;EFI パーティション（ &lt;code&gt;&#x2F;efi&lt;&#x2F;code&gt; ）直下の &lt;code&gt;initramfs-linux-fallback.img&lt;&#x2F;code&gt;, &lt;code&gt;initramfs-linux.img&lt;&#x2F;code&gt;, &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt;, &lt;code&gt;vmlinuz-linux&lt;&#x2F;code&gt; の4つのファイルを XBOOTLDR パーティション（ &lt;code&gt;&#x2F;boot&lt;&#x2F;code&gt; ）直下に移動させました。（ &lt;code&gt;intel-ucode.img&lt;&#x2F;code&gt; は CPU のマイクロコードで、CPUメーカーによって名前が違います。 &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;%E3%83%9E%E3%82%A4%E3%82%AF%E3%83%AD%E3%82%B3%E3%83%BC%E3%83%89&quot;&gt;ArchWiki&lt;&#x2F;a&gt; にマイクロコードに関する詳しい情報があります。）&lt;&#x2F;p&gt;
 &lt;p&gt;また、個別の Linux 用のローダー設定ファイル（ &lt;code&gt;&#x2F;efi&#x2F;loader&#x2F;entries&#x2F;*.conf&lt;&#x2F;code&gt; ）は EFI パーティションから、 XBOOTLDR パーティション内（ &lt;code&gt;&#x2F;boot&#x2F;loader&#x2F;entries&#x2F;*.conf&lt;&#x2F;code&gt; ）に移動させました。&lt;&#x2F;p&gt;
 &lt;h3 id=&quot;systemd-boot_のインストール&quot;&gt;systemd-boot のインストール&lt;&#x2F;h3&gt;
 &lt;p&gt;次のコマンドで、 systemd-boot 関連のファイルを EFI パーティションと XBOOTLDR パーティションにインストールしました。&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;# bootctl --esp-path=&#x2F;efi --boot-path=&#x2F;boot install
 &lt;&#x2F;span&gt;&lt;&#x2F;code&gt;&lt;&#x2F;pre&gt;
 &lt;h3 id=&quot;systemd-boot_の設定&quot;&gt;systemd-boot の設定&lt;&#x2F;h3&gt;
-&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Systemd-boot#.E3.83.AD.E3.83.BC.E3.83.80.E3.83.BC.E8.A8.AD.E5.AE.9A&quot;&gt;ArchWiki&lt;&#x2F;a&gt; を参考に systemd-boot 関連の設定ファイルを作成・編集しました。私の環境での設定を紹介します。&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Systemd-boot#.E3.83.AD.E3.83.BC.E3.83.80.E3.83.BC.E8.A8.AD.E5.AE.9A&quot;&gt;ArchWiki&lt;&#x2F;a&gt; を参考に systemd-boot 関連の設定ファイルを作成・編集しました。私の環境での設定を紹介します。&lt;&#x2F;p&gt;
 &lt;p&gt;&lt;code&gt;&#x2F;efi&#x2F;loader&#x2F;loader.conf&lt;&#x2F;code&gt; は次のようにしました。 &lt;strong&gt;EFI パーティション（ &lt;code&gt;&#x2F;efi&lt;&#x2F;code&gt; ）内&lt;&#x2F;strong&gt;に配置しています。&lt;&#x2F;p&gt;
 &lt;pre style=&quot;background-color:#1e1e1e;color:#dcdcdc;&quot;&gt;&lt;code&gt;&lt;span&gt;default arch
 &lt;&#x2F;span&gt;&lt;span&gt;timeout 3
@@ -91,9 +91,9 @@
 &lt;p&gt;XBOOTLDR パーティションは聞いたこともなかったので、うまく動作するか不安でしたが、意外とすんなり使うことができたので驚きました。 Windows とデュアルブートしている関係で、 ESP パーティションにカーネルイメージや initramfs が入り切らないという人にとっては、とても重宝する機能だと思いました。&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;参考にしたページ&quot;&gt;参考にしたページ&lt;&#x2F;h2&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Systemd-boot&quot;&gt;systemd-boot - ArchWiki&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id=254374&quot;&gt;Systemd-Boot Installation XBOOTLDR &#x2F; Forum &amp;amp; Wiki discussion &#x2F; Arch Linux Forums&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;systemd.io&#x2F;BOOT_LOADER_SPECIFICATION&#x2F;&quot;&gt;Boot Loader Specification&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;wiki.archlinux.jp&#x2F;index.php&#x2F;Systemd-boot&quot;&gt;systemd-boot - ArchWiki&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;bbs.archlinux.org&#x2F;viewtopic.php?id=254374&quot;&gt;Systemd-Boot Installation XBOOTLDR &#x2F; Forum &amp;amp; Wiki discussion &#x2F; Arch Linux Forums&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;systemd.io&#x2F;BOOT_LOADER_SPECIFICATION&#x2F;&quot;&gt;Boot Loader Specification&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 </content>
 	</entry>
@@ -115,7 +115,7 @@
 &lt;a href=&quot;DSCN5709.JPG&quot; target=&quot;_blank&quot;&gt;
     &lt;img
     sizes=&quot;(min-width: 924px) 832px, (min-width: 760px) calc(100vw - 92px), calc(100vw - 24px)&quot;
-    srcset=&quot;https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;dc561434df35124400.webp 208w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;5d643d39f49e3eb600.webp 312w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;6221340fb45735fb00.webp 416w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;5e708fedb68328ed00.webp 624w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;a29a15fd3d8af8f600.webp 832w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;51e92699407edbfd00.webp 936w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;fd84639217c3e29700.webp 1248w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;ac9138faf2526a2d00.webp 1664w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;b48eb42e43df2c6300.webp 2496w&quot;
+    srcset=&quot;&amp;#x2F;processed_images&amp;#x2F;3eb113e88b5347ec00.webp 312w,&amp;#x2F;processed_images&amp;#x2F;4207d3c5a4b139e300.webp 416w,&amp;#x2F;processed_images&amp;#x2F;b0869545fb91c31f00.webp 624w,&amp;#x2F;processed_images&amp;#x2F;a57b8967d8a8248a00.webp 832w,&amp;#x2F;processed_images&amp;#x2F;0d25bd22cd07e84100.webp 936w,&amp;#x2F;processed_images&amp;#x2F;2bbc2a744e56829800.webp 1248w,&amp;#x2F;processed_images&amp;#x2F;b173bc54d50925a700.webp 1664w,&amp;#x2F;processed_images&amp;#x2F;aad6d71e2c296d0100.webp 2496w&quot;
     width=&quot;4608&quot; height=&quot;3456&quot; alt=&quot;飛鳥Ⅱ&quot;
     decoding=&quot;async&quot;&gt;
 &lt;&#x2F;a&gt;
@@ -133,7 +133,7 @@
 &lt;a href=&quot;DSCN4360.JPG&quot; target=&quot;_blank&quot;&gt;
     &lt;img
     sizes=&quot;(min-width: 924px) 832px, (min-width: 760px) calc(100vw - 92px), calc(100vw - 24px)&quot;
-    srcset=&quot;https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;e131e53f2dc1320600.webp 208w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;bd4b6ffdaf85fa1600.webp 312w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;138f3801510c3c9c00.webp 416w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;22a0ad29135d24c500.webp 624w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;9d00705cd52805be00.webp 832w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;2d35ef23430b3e5500.webp 936w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;727d3d82ff7eccef00.webp 1248w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;caf0e0bf5654df2400.webp 1664w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;ba792cb8fac536b700.webp 2496w&quot;
+    srcset=&quot;&amp;#x2F;processed_images&amp;#x2F;e795bf0d641e1cc000.webp 312w,&amp;#x2F;processed_images&amp;#x2F;83fdd61ce7a7201100.webp 416w,&amp;#x2F;processed_images&amp;#x2F;b2bdd9977674ffd100.webp 624w,&amp;#x2F;processed_images&amp;#x2F;c9e4fe4b13ae0b7300.webp 832w,&amp;#x2F;processed_images&amp;#x2F;4a9ab38b5d59e96000.webp 936w,&amp;#x2F;processed_images&amp;#x2F;660c72162462d93200.webp 1248w,&amp;#x2F;processed_images&amp;#x2F;6c96d87b725d681300.webp 1664w,&amp;#x2F;processed_images&amp;#x2F;63721e7cc16ced6c00.webp 2496w&quot;
     width=&quot;4608&quot; height=&quot;3456&quot; alt=&quot;兵庫県立美術館&quot;
     decoding=&quot;async&quot;&gt;
 &lt;&#x2F;a&gt;
@@ -153,7 +153,7 @@
 &lt;a href=&quot;DSCN5511.JPG&quot; target=&quot;_blank&quot;&gt;
     &lt;img
     sizes=&quot;(min-width: 924px) 832px, (min-width: 760px) calc(100vw - 92px), calc(100vw - 24px)&quot;
-    srcset=&quot;https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;9e2bd72e5c5898d800.webp 208w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;3e4b5d091d46766c00.webp 312w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;5392a091ca8f83bc00.webp 416w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;e3425c23a87e5a5900.webp 624w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;6bbac4a0c56ea6c800.webp 832w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;84db14f11d0301e600.webp 936w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;e88893b8eb5f023d00.webp 1248w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;97754afc3582ebe600.webp 1664w,https:&amp;#x2F;&amp;#x2F;ihoronir.github.io&amp;#x2F;processed_images&amp;#x2F;b475b75af75abb7500.webp 2496w&quot;
+    srcset=&quot;&amp;#x2F;processed_images&amp;#x2F;0fd23b9b8bf05d4300.webp 312w,&amp;#x2F;processed_images&amp;#x2F;729dbc18300ff4a400.webp 416w,&amp;#x2F;processed_images&amp;#x2F;d0624853fc85bee800.webp 624w,&amp;#x2F;processed_images&amp;#x2F;cc4d6f8af4faf7e000.webp 832w,&amp;#x2F;processed_images&amp;#x2F;d481a0b327faa0c900.webp 936w,&amp;#x2F;processed_images&amp;#x2F;656eb69144600a5900.webp 1248w,&amp;#x2F;processed_images&amp;#x2F;0cc79687791867ab00.webp 1664w,&amp;#x2F;processed_images&amp;#x2F;620fed0a3a036b5000.webp 2496w&quot;
     width=&quot;3456&quot; height=&quot;4608&quot; alt=&quot;神戸発電所&quot;
     loading=&quot;lazy&quot;&gt;
 &lt;&#x2F;a&gt;
@@ -367,7 +367,7 @@
 &lt;h2 id=&quot;「書き込み方式」による実装例&quot;&gt;「書き込み方式」による実装例&lt;&#x2F;h2&gt;
 &lt;p&gt;「書き込み方式」で最短経路数を求められる原理は、下記ウェブページに書かれています。&lt;&#x2F;p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;manabitimes.jp&#x2F;math&#x2F;962&quot;&gt;道順の場合の数を求めるテクニック | 高校数学の美しい物語&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;manabitimes.jp&#x2F;math&#x2F;962&quot;&gt;道順の場合の数を求めるテクニック | 高校数学の美しい物語&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
 &lt;&#x2F;ul&gt;
 &lt;p&gt;「書き込み方式」を今回の問題に当てはめる上で重要なポイントは次の2つです。&lt;&#x2F;p&gt;
 &lt;ul&gt;
@@ -415,7 +415,7 @@
 &lt;p&gt;最近聴いてる曲でも紹介しようかな。&lt;&#x2F;p&gt;
 &lt;iframe width=&quot;312&quot; height=&quot;176&quot; src=&quot;https:&#x2F;&#x2F;ext.nicovideo.jp&#x2F;thumb&#x2F;sm20658500&quot; scrolling=&quot;no&quot; style=&quot;border:solid 1px #ccc;&quot; frameborder=&quot;0&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nicovideo.jp&#x2F;watch&#x2F;sm20658500&quot;&gt;【初音ミクappend】　雀色コンデンサ　【オリジナル曲】&lt;&#x2F;a&gt;&lt;&#x2F;iframe&gt;
 &lt;iframe width=&quot;312&quot; height=&quot;176&quot; src=&quot;https:&#x2F;&#x2F;ext.nicovideo.jp&#x2F;thumb&#x2F;sm13077134&quot; scrolling=&quot;no&quot; style=&quot;border:solid 1px #ccc;&quot; frameborder=&quot;0&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.nicovideo.jp&#x2F;watch&#x2F;sm13077134&quot;&gt;【初音ミクappend】 Ameto 【オリジナル曲】&lt;&#x2F;a&gt;&lt;&#x2F;iframe&gt;
-&lt;p&gt;最近って書いたけど、嘘です。最近に限らず前から聴いてます。まあそれはともかく &lt;a href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;whoosrockq&quot;&gt;whoo さん&lt;&#x2F;a&gt;の曲はどれも本当に良いのでぜひ聴いてください！&lt;&#x2F;p&gt;
+&lt;p&gt;最近って書いたけど、嘘です。最近に限らず前から聴いてます。まあそれはともかく &lt;a rel=&quot;noopener&quot; target=&quot;_blank&quot; href=&quot;https:&#x2F;&#x2F;twitter.com&#x2F;whoosrockq&quot;&gt;whoo さん&lt;&#x2F;a&gt;の曲はどれも本当に良いのでぜひ聴いてください！&lt;&#x2F;p&gt;
 &lt;p&gt;音楽を聴いていたらもう少し書く元気が出てきた！&lt;&#x2F;p&gt;
 &lt;h2 id=&quot;年末に向けて&quot;&gt;年末に向けて&lt;&#x2F;h2&gt;
 &lt;p&gt;今は10月中旬なので、実はもうあと2ヶ月ちょいで今年も終わりです。でも自分にはまだ全然そんな実感がありません。毎年そうだけど、全然気が付かないうちに11月になり、12月になって、一年が終わってしまいます。&lt;&#x2F;p&gt;
