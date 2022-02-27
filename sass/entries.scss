@@ -5,7 +5,6 @@
 .entries_header {
 	text-align: center;
 	margin-bottom: 24px;
-	grid-column: 1 / 4;
 }
 
 .entries_articles_Article {
@@ -58,7 +57,6 @@
 		display: grid;
 		grid-auto-flow: dense;
 		grid-template-columns: 1fr 1fr;
-		grid-template-rows:  max-content max-content max-content max-content;
 		gap: 20px 18px;
 	}
 

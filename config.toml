@@ -20,6 +20,7 @@ generate_feed = true
 highlight_code = true
 #highlight_theme = "kronuz"
 highlight_theme = "visual-studio-dark"
+external_links_target_blank = true
 
 [slugify]
 paths = "off"

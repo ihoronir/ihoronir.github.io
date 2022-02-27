@@ -1,0 +1,30 @@
+{% extends "_base.html" %}
+
+{% block base_config %}
+{% set base_config_now = "about" %}
+{% set base_config_title = page.title %}
+{% set base_config_stylesheets = [""] %}
+{% endblock base_config %}
+
+{% block base_main %}
+<style>
+.base_main {
+	padding: 24px 12px;
+}
+
+@media (min-width: 760px) {
+	.base_main {
+		padding: 32px 46px;
+	}
+}
+
+@media (min-width: 1245px) {
+	.base_main {
+		padding: 40px 46px;
+	}
+}
+</style>
+<main class="base_main lib_article">
+	{{- page.content | safe}}
+</main>
+{% endblock base_main %}

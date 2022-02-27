@@ -1,5 +1,5 @@
-{% import "_macros.html" as macros %}
 {% extends "_base.html" %}
+{% import "_macros.html" as macros %}
 
 {% block base_config                              %}
 {% set base_config_now = "entry"                  %}
@@ -24,7 +24,7 @@
 			{%     for asset in page.assets                   %}
 			{%         if asset is matching(page.extra.image) %}
 			{%             set_global image = asset           %}
-			{%             break                              %}    
+			{%             break                              %}
 			{%         endif                                  %}
 			{%     endfor                                     %}
 			{%     set meta = get_image_metadata(path=image)  %}
@@ -34,7 +34,7 @@
 			width="{{meta.width}}" height="{{meta.height}}" alt="{{ page.title }}"
 			{% if cnt <= 6 %}decoding="async"{% else %}loading="lazy"{% endif %}>
 			{% endif %}
-			<p>{{page.description}}<br><a href="{{ page.path | safe }}">Read More</a> (Date: {{ page.date }})</p>
+			<p>{{page.description}}<br><a href="{{ page.path | safe }}">▷ 記事を見る</a> （公開日： {{ page.date }} ）</p>
 		</article>
 		{% endfor %}
 	</section>

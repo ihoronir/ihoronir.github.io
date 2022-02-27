@@ -12,27 +12,8 @@
 	line-height: 50px;
 	padding-bottom: 20px;
 	margin-bottom: 20px;
-	border-bottom: #aaaaaa 3px solid;
+	//border-bottom: #aaaaaa 3px solid;
 }
-
-.entry_article {
-	p, ul, ol, pre, blockquote, iframe, img {
-		margin-bottom: 24px;
-	}
-
-	h2, h3, h4, h5, h6 {
-		margin: 70px 0 16px;
-		line-height: 1.25;
-	}
-
-	h2 {
-		padding: 0 0 .3em .2em;
-		border-bottom: 3px solid #787877;
-	}
-
-}
-
-.katex-display { overflow: auto hidden }
 
 .entry_ref {
 	display: none;
@@ -90,12 +71,12 @@
 	.entry_ref_Section_header {
 		margin: 16px 0;
 	}
-
+	/*
 	.entry_ref_lists_List_title {
 		padding-left: 12px;
 		margin-bottom: 4px;
 		font-weight: bold;
-	}
+	}*/
 
 	.entry_ref_toc {
 		padding: 8px 18px;

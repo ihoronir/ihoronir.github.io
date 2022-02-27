@@ -1,5 +1,3 @@
-//@import "_mixin";
-
 * { box-sizing: border-box; }
 
 html {
@@ -30,7 +28,7 @@ a {
 
 code {
 	font-family: "Source Code Pro", "Monaco", "Consolas", monospace;
-	background-color: #1e1e1e;
+	background: #1e1e1e;
 	border: #303030 1px solid;
 	padding: 0 4px;
 }
@@ -55,6 +53,7 @@ blockquote {
 
 img {
 	display: block;
+	background: #1e1e1e;
 	max-width: 100%;
 	height: auto;
 }
@@ -70,8 +69,6 @@ body {
 	max-width: 924px;
 	margin: 0 auto;
 }
-
-@import "_base_header.scss";
 
 .base_header {
 	background-color: #040404;
@@ -154,6 +151,8 @@ body {
 	}
 }
 
+@import "_base_header.scss";
+
 
 /* Remove all animations and transitions for people that prefer not to see them */
 /* 見たくない人用に、すべてのアニメーションとトランジションを削除 */
@@ -166,3 +165,21 @@ body {
 		scroll-behavior: auto !important;
 	}
 }*/
+
+.lib_article {
+	p, ul, ol, pre, blockquote, iframe, img {
+		margin-bottom: 24px;
+	}
+
+	h2, h3, h4, h5, h6 {
+		margin: 70px 0 16px;
+		line-height: 1.25;
+	}
+
+	h2 {
+		padding: 0 0 .3em .2em;
+		border-bottom: 3px solid #787877;
+	}
+}
+
+.katex-display { overflow: auto hidden }

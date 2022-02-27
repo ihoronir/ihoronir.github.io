@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-{% block base_config %}
-{% set base_config_now = "" %}
-{% set base_config_title = "タイトル未設定" %}
-{% set base_config_stylesheets = [] %}
-{% endblock base_config %}
+{% block base_config                        %}
+{% set base_config_now         = ""         %}
+{% set base_config_title       = "Untitled" %}
+{% set base_config_stylesheets = []         %}
+{% endblock base_config                     %}
 
 {% set base_config_stylesheets = ["/base.css"] | concat(with=base_config_stylesheets) %}
 
-{% set page_or_section = page | default(value = section)                                                         %}
-{% set description = page_or_section.description | default(value = "ihoronir.github.io")                         %}
-{% set_global og_image = get_url(path = "/cover.jpg")                                                            %}
-{% set_global twitter_card = "summary"                                                                           %}
+{% set        page_or_section     = page | default(value = section)                                     %}
+{% set        description         = page_or_section.description | default(value = "ihoronir.github.io") %}
+{% set_global og_image     = get_url(path = "/cover.jpg")                                        %}
+{% set_global twitter_card = "summary"                                                           %}
+
 {% if page_or_section.extra.image                                                                                %}
 {%     set_global twitter_card = "summary_large_image"                                                           %}
 {% 	   for asset in page_or_section.assets                                                                       %}
@@ -35,12 +36,12 @@
 		<link rel="stylesheet" href="{{ stylesheet | safe }}">
 		{% endfor %}
 
-		<link rel="icon" href="/favicon.png">
+		<link rel="icon" href="{{ get_url(path = "favicon.png") }}">
 		<!--
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<link rel="alternate" href="/atom.xml" title="" type="application/atom+xml">
 		-->
-		<link rel="alternate" type="application/atom+xml" title="RSS" href="{{ get_url(path="atom.xml", trailing_slash=false) }}">
+		<link rel="alternate" type="application/atom+xml" title="Atom" href="{{ get_url(path = "atom.xml") }}">
 
 		<meta property="og:title" content="{{ base_config_title }}">
 		<meta property="og:description" content="{{ description }}">
@@ -105,11 +106,11 @@
 				</ul>
 			</nav>
 			<div class="base_header_ad_1">
-				<div>広告 Advertisement</div>
+				<div>広告</div>
 				<div style="background: #333; width:300px; height:600px; margin: auto; padding: 40px 0; font-size: 32px; color: #777;">広告募集中</div>
 			</div>
 			<div class="base_header_ad_2">
-				<div>広告 Advertisement</div>
+				<div>広告</div>
 				<div style="background: #333; width:160px; height:600px; margin: auto; padding: 40px 0; font-size: 32px; color: #777;">広告募集中</div>
 			</div>
 		</header>
