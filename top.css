@@ -1,1 +1,1 @@
-.top{padding:38px}.top_header{margin:0 0 40px;background:linear-gradient(145deg, #00ff62, #00a2ff);color:#121212;padding:5px;text-align:center;font-size:24px}@media (min-width: 1236px){.top_header{font-size:28px;padding:6px 0}}
+.base_main{padding:24px 12px}.top_header{margin:0 0 40px;background:linear-gradient(145deg, #00ff62, #00a2ff);color:#121212;padding:5px;text-align:center;font-size:24px}@media (min-width: 760px){.base_main{padding:32px 46px}}@media (min-width: 1245px){.top_header{font-size:28px;padding:6px 0}.base_main{padding:40px 46px}}
