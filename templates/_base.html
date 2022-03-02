@@ -6,12 +6,15 @@
 {% set base_config_stylesheets = []         %}
 {% endblock base_config                     %}
 
-{% set base_config_stylesheets = ["/base.css"] | concat(with=base_config_stylesheets) %}
+{% set        page_or_section = page | default(value = section)                                     %}
+{% set        description     = page_or_section.description | default(value = "ihoronir.github.io") %}
+{% set_global og_image        = get_url(path = "/cover.jpg")                                        %}
+{% set_global twitter_card    = "summary"                                                           %}
 
-{% set        page_or_section     = page | default(value = section)                                     %}
-{% set        description         = page_or_section.description | default(value = "ihoronir.github.io") %}
-{% set_global og_image     = get_url(path = "/cover.jpg")                                        %}
-{% set_global twitter_card = "summary"                                                           %}
+{% set base_config_stylesheets = ["/base.css"] | concat(with = base_config_stylesheets)                                                      %}
+{% if page_or_section.extra.katex                                                                                                            %}
+{%     set base_config_stylesheets = base_config_stylesheets | concat(with = "https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css") %}
+{% endif                                                                                                                                     %}
 
 {% if page_or_section.extra.image                                                                                %}
 {%     set_global twitter_card = "summary_large_image"                                                           %}

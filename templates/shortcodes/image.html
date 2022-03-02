@@ -12,7 +12,7 @@
 <a href="{{src}}" target="_blank">
     <img
     sizes="(min-width: 924px) 832px, (min-width: 760px) calc(100vw - 92px), calc(100vw - 24px)"
-    srcset="{{ macros::generate_srcset(src=image) }}"
-    width="{{meta.width}}" height="{{meta.height}}" alt="{{alt}}"
+    srcset="{{ macros::generate_srcset(src = image) }}"
+    width="{{ meta.width }}" height="{{ meta.height }}" alt="{{ alt }}"
     {% if nth <= 2 %}decoding="async"{% else %}loading="lazy"{% endif %}>
 </a>

@@ -1,28 +1,26 @@
-{% macro _generate_srcset(src)                                                                                    %}
-{% set widths = [312, 416, 624, 832, 936, 1248, 1664, 2496]                                                       %}
-{% set meta = get_image_metadata(path=src)                                                                        %}
-{% if src is matching("[.](jpg|jpeg|JPG|JPEG)$")                                                                  %}
-{%     for width in widths                                                                                        %}
-{%         if meta.width > width                                                                                  %}
-{%             set image  = resize_image(path = src, width =  width, op = "fit_width", format="webp", quality=75) %}
-{%             if loop.index != 1                                                                                 %}
-,
-{%             endif                                                                                              %}
-{{ image.url | replace(from=config.base_url, to="") | safe}} {{ width }}w
-{%         endif                                                                                                  %}
-{%     endfor                                                                                                     %}
-{% else                                                                                                           %}
-{%     for width in widths                                                                                        %}
-{%         if meta.width > width                                                                                  %}
-{%             set image  = resize_image(path = src, width =  width, op = "fit_width", format="webp")             %}
-{%             if loop.index != 1                                                                                 %}
-,
-{%             endif                                                                                              %}
+{% macro __generate_srcset(src, width)                                                                             %}
+{%     set_global image = resize_image(path = src, width = width, op = "fit_width", format = "webp", quality = 75) %}
 {{ image.url | replace(from=config.base_url, to="") | safe }} {{ width }}w
-{%         endif                                                                                                  %}
-{%     endfor                                                                                                     %}
-{% endif                                                                                                          %}
-{% endmacro generate_srcset                                                                                       %}
+{% endmacro __generate_srcset                                                                                      %}
+
+
+{% macro _generate_srcset(src)                             %}
+{%     set widths = [312, 624, 832, 936, 1248, 1664, 2496] %}
+{%     set meta = get_image_metadata(path = src)           %}
+{%     if meta.format != "jpg"                             %}
+{{ throw(message="Error: Source image is not a jpg file") }}
+{%     endif                                               %}
+{%     for width in widths                                 %}
+{%         if loop.index != 1 %},{% endif                  %}
+{%         if meta.width < width                           %}
+{{ self::__generate_srcset(src = src, width = meta.width) }}
+{%             break                                       %}
+{%         else                                            %}
+{{ self::__generate_srcset(src = src, width = width) }}
+{%         endif                                           %}
+{%     endfor                                              %}
+{% endmacro generate_srcset                                %}
+
 
 {% macro generate_srcset(src) %}{{ self::_generate_srcset(src=src) | replace(from="
 ", to="") }}{% endmacro generate_srcset %}
