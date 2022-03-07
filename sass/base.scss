@@ -1,7 +1,7 @@
 * { box-sizing: border-box; }
 
 html {
-	background: #151618;
+	background: #151618 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+CjxyZWN0IHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0iIzE1MTYxOCI+PC9yZWN0Pgo8ZyBmaWxsPSIjMmEyYjJjIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIwLjUiIHk9IjEwIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIxMDAiIGhlaWdodD0iMC41IiB5PSIyMCI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjAuNSIgeT0iMzAiPjwvcmVjdD4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIwLjUiIHk9IjQwIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIwLjUiIGhlaWdodD0iMTAwIiB4PSIxMCI+PC9yZWN0Pgo8cmVjdCB3aWR0aD0iMC41IiBoZWlnaHQ9IjEwMCIgeD0iMjAiPjwvcmVjdD4KPHJlY3Qgd2lkdGg9IjAuNSIgaGVpZ2h0PSIxMDAiIHg9IjMwIj48L3JlY3Q+CjxyZWN0IHdpZHRoPSIwLjUiIGhlaWdodD0iMTAwIiB4PSI0MCI+PC9yZWN0Pgo8L2c+CjxyZWN0IHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBzdHJva2U9IiMzMDMwMzAiPjwvcmVjdD4KPC9zdmc+");
 }
 
 /*figure, figcaption, dl,dd,*/
@@ -21,7 +21,7 @@ strong { color: white; }
 ul, ol { padding-left: 40px; }
 
 a {
-	color: #00b0ff ;
+	color: #00b0ff;
 	text-decoration: none;
 	&:hover { text-decoration: underline; }
 }
@@ -30,6 +30,7 @@ code {
 	font-family: "Source Code Pro", "Monaco", "Consolas", monospace;
 	background: #1e1e1e;
 	border: #303030 1px solid;
+	//box-shadow: 0 0 20px 4px #07070a;
 	padding: 0 4px;
 }
 
@@ -38,9 +39,11 @@ pre {
 	overflow: auto;
 	padding: 6px 8px;
 	border: #303030 1px solid;
+	//box-shadow: 0 0 20px 4px #07070a;
 	code {
 		padding: 0;
 		border: none;
+		//box-shadow: none;
 	}
 }
 
@@ -52,7 +55,7 @@ blockquote {
 }
 
 img {
-	display: block;
+	display: inline-block;
 	background: #1e1e1e;
 	max-width: 100%;
 	height: auto;
@@ -65,7 +68,7 @@ body {
 	line-height: 1.9;
 	line-break: strict;
 	color: #ececec;
-	box-shadow: 0 0 56px 56px #07070a;
+	box-shadow: 0 0 40px 20px #07070a;
 	max-width: 924px;
 	margin: 0 auto;
 }
@@ -179,6 +182,10 @@ body {
 	h2 {
 		padding: 0 0 .3em .2em;
 		border-bottom: 3px solid #787877;
+	}
+
+	img {
+		box-shadow: 0 0 22px 12px #07070a;
 	}
 }
 

@@ -25,6 +25,12 @@
 }
 </style>
 <main class="base_main">
-	{{- page.content | safe}}
+	{{ page.content | safe }}
+	{% for asset in page.assets %}
+	{%     if asset is matching("[.](jpg|JPG|png)$") %}
+	{%         set image = resize_image(path=asset, width=240, height=180) %}
+	<a href="{{ get_url(path=asset) }}" target="_blank"><img src="{{ image.url }}" /></a>
+	{% endif %}
+	{% endfor %}
 </main>
 {% endblock base_main %}
