@@ -1,10 +1,9 @@
 {% extends "_base.html" %}
 
-{% block base_config %}
-{% set base_config_now = "top" %}
-{% set base_config_title = "トップページ" %}
-{% set base_config_stylesheets = ["/top.css"] %}
-{% endblock base_config %}
+{% block base_config                              %}
+{%     set base_config_now         = "top"        %}
+{%     set base_config_stylesheets = ["/top.css"] %}
+{% endblock base_config                           %}
 
 {% block base_main %}
 <main class="base_main top">
@@ -15,3 +14,4 @@
 
 </main>
 {% endblock base_main %}
+

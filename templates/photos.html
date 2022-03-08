@@ -1,9 +1,8 @@
 {% extends "_base.html" %}
 
-{% block base_config %}
-{% set base_config_now = "photo" %}
-{% set base_config_title = page.title %}
-{% set base_config_stylesheets = [""] %}
+{% block base_config                         %}
+{%     set base_config_now         = "photo" %}
+{%     set base_config_stylesheets = []      %}
 {% endblock base_config %}
 
 {% block base_main %}
@@ -34,3 +33,4 @@
 	{% endfor %}
 </main>
 {% endblock base_main %}
+

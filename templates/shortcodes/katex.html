@@ -1,4 +1,4 @@
-{% set tex  = source | default(value = "") | urlencode_strict          %}
+{% set tex  = source | default(value="") | urlencode_strict            %}
 {% set mode = "inline"                                                 %}
 {% if block                                                            %}
 {%     set tex  = body | urlencode_strict                              %}

@@ -1,10 +1,9 @@
 {% extends "_base.html" %}
 
-{% block base_config %}
-{% set base_config_now = "develop" %}
-{% set base_config_title = page.title %}
-{% set base_config_stylesheets = [""] %}
-{% endblock base_config %}
+{% block base_config                           %}
+{%     set base_config_now         = "develop" %}
+{%     set base_config_stylesheets = []        %}
+{% endblock base_config                        %}
 
 {% block base_main %}
 <style>
@@ -28,3 +27,4 @@
 	{{- page.content | safe}}
 </main>
 {% endblock base_main %}
+

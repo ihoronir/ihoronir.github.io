@@ -1,11 +1,10 @@
 {% extends "_base.html" %}
 {% import "_macros.html" as macros %}
 
-{% block base_config                              %}
-{% set base_config_now = "entry"                  %}
-{% set base_config_title = section.title          %}
-{% set base_config_stylesheets = ["/entries.css"] %}
-{% endblock base_config                           %}
+{% block base_config                                  %}
+{%     set base_config_now = "entry"                  %}
+{%     set base_config_stylesheets = ["/entries.css"] %}
+{% endblock base_config                               %}
 
 {% block base_main %}
 <main class="base_main entries">
@@ -13,9 +12,9 @@
 		<h1 class="entries_header_title">{{ section.title }}</h1>
 	</header>
 	<section class="entries_articles">
-		{% set_global cnt = 0            %}
-		{% for page in section.pages     %}
-		{%     set_global cnt = cnt + 1  %}
+		{% set_global cnt = 0           %}
+		{% for page in section.pages    %}
+		{%     set_global cnt = cnt + 1 %}
 		<article class="entries_articles_Article{% if page.extra.image %} entries_articles_Article-wide{% endif %}">
 			<h2 class="entries_articles_Article_title{% if page.extra.image %} entries_articles_Article_title-wide{% endif %}">
 				<a class="entries_articles_Article_title_link" href="{{ page.path | safe }}">{{ page.title }}</a>
@@ -35,9 +34,7 @@
 			{% if cnt <= 6 %}decoding="async"{% else %}loading="lazy"{% endif %}>
 			{% endif %}
 			<p>
-				{{page.description}}<br>
-				<a href="{{ page.path | safe }}">▷ 記事を見る</a
-					> （公開日： <time datetime="{{ page.date }}">{{ page.year }}年 {{ page.month }}月 {{ page.day }}日</time>）
+				{{page.description}}<br><a href="{{ page.path | safe }}">▷ 記事を見る</a> （公開日： <time datetime="{{ page.date }}">{{ page.year }}年 {{ page.month }}月 {{ page.day }}日</time>）
 			</p>
 		</article>
 		{% endfor %}
