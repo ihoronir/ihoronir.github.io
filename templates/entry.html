@@ -12,8 +12,9 @@
 		<header class="entry_article_header">
 			<h1 class="entry_article_header_title">{{ page.title }}</h1>
 			<p class="entry_article_header_meta">
-			この記事の公開日：{{ page.date }}<br>
-			この記事の最終編集日：{{ page.updated | default(value = page.date) }}
+			{% set updated = page.updated | default(value = page.date) | split(pat = "-") %}
+			この記事の公開日： <time datetime="{{ page.date }}">{{ page.year }}年 {{ page.month }}月 {{ page.day }}日</time><br>
+			この記事の最終編集日： <time datetime="{{ page.updated }}">{{ updated | nth(n = 0) }}年 {{ updated | nth(n = 1) }}月 {{ updated | nth(n = 2) }}日</time>
 			</p>
 		</header>
 		{{ page.content | safe }}

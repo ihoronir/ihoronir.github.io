@@ -118,12 +118,20 @@
 			</div>
 		</header>
 
-		<nav class="base_breadcrumb">現在地：
-			{% for ancestor_path in page_or_section.ancestors %}
-			{%     set section = get_section(path = ancestor_path) %}
-			<a href="{{section.path}}">{{ section.title }}</a> / 
-			{% endfor %}
-			<a href="{{page_or_section.path}}">{{ page_or_section.title }}</a>
+		<nav class="base_breadcrumb">
+			<ul class="base_breadcrumb_list">
+				{% set_global cnt = 0                                  %}
+				{% for ancestor_path in page_or_section.ancestors      %}
+				{%     set section = get_section(path = ancestor_path) %}
+				<li class="base_breadcrumb_list_Item{% if cnt == 0 %} base_breadcrumb_list_Item-first{% else %} base_breadcrumb_list_Item-notfirst{% endif %}">
+					<a href="{{section.path}}">{{ section.title }}</a>
+				</li>
+				{%     set_global cnt = cnt + 1 %}
+				{% endfor                       %}
+				<li class="base_breadcrumb_list_Item{% if cnt == 0 %} base_breadcrumb_list_Item-first{% else %} base_breadcrumb_list_Item-notfirst{% endif %}">
+					<a href="{{page_or_section.path}}">{{ page_or_section.title }}</a>
+				</li> 
+			</ul>
 		</nav>
 
 		{% block base_main %}{% endblock %}
