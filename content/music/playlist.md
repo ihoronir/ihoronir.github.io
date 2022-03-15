@@ -17,7 +17,7 @@ description = "ここでは Ihoronir が適当に選んだ曲（おすすめの�
 ## 2022/3/15
 
 - 夜の足跡 / whoo / [YouTube](https://youtu.be/ocLdkjHgVkI) / [ニコニコ動画](https://nico.ms/sm32667968)
-- ダウナーボーイ / うみくん / 可不 / [YouTube](https://youtu.be/z2aFHfHyHGU) / [ニコニコ動画](https://youtu.be/z2aFHfHyHGU)
+- ダウナーボーイ / うみくん / 可不 / [YouTube](https://youtu.be/z2aFHfHyHGU) / [ニコニコ動画](https://nico.ms/sm39559770)
 
 ## 2022/3/14
 
