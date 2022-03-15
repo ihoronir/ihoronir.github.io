@@ -23,8 +23,8 @@
 	}
 }
 </style>
-<main class="base_main music">
-	{{- page.content | safe}}
+<main class="base_main music lib_article">
+	{{ section.content | default(value=page.content | safe) | safe }}
 </main>
 {% endblock base_main %}
 

@@ -200,3 +200,9 @@ body {
 }
 
 .katex-display { overflow: auto hidden }
+/*
+@media (prefers-color-scheme: light) {
+	html { background: rgb(202, 202, 202); color:  #555; }
+	.base_main, .base_header { background:  #eee; color: black; }
+  }
+*/
