@@ -10,6 +10,16 @@ description = "ここでは Ihoronir が適当に選んだ曲（おすすめの�
 
 多分1日2曲ずつ追加していくと思います。
 
+## 2022/3/18
+
+- ワンダーフォーゲル / くるり / [YouTube](https://youtu.be/XH7lpPCxbgE)
+- 過去を喰らう / 花譜 / [YouTube](https://youtu.be/tMKrECxEpq8)
+
+## 2022/3/17
+
+- HeavenZ-ArmZ / sasakure. UK / 初音ミク /  [YouTube](https://youtu.be/xzYDWBZ8E_U)
+- 閃光 / Alexandros / [YouTube](https://youtu.be/xfG6L9I7N8I)
+
 ## 2022/3/16
 - paranoia / つなまる / 初音ミク / [YouTube](https://youtu.be/xxNuM4ZkFn8) / [ニコニコ動画](https://nico.ms/sm17239967)
 - Gravity=Reality / samfree / 巡音ルカ / [ニコニコ動画](https://nico.ms/sm8824425)
