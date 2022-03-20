@@ -10,6 +10,21 @@ description = "ここでは Ihoronir が適当に選んだ曲（おすすめの�
 
 多分1日2曲ずつ追加していくと思います。
 
+## 2022/3/21
+
+- やだ / シシド / 可不 / [YouTube](https://youtu.be/jPJZ83ecqxw) / [ニコニコ動画](https://nico.ms/sm40143883)
+- Parades / whoo / 初音ミク / [ニコニコ動画](https://nico.ms/sm11535096)
+
+## 2022/3/20
+
+- 町かどタンジェント / Shami Momo / [YouTube](https://youtu.be/4koCpY4iYhI)
+- Crystal collapse / Sibe / [YouTube](https://youtu.be/HRV_X_T5FEc) / [ニコニコ動画](https://nico.ms/sm29009281)
+
+## 2022/3/19
+
+- Postscript / wintermute / 初音ミク / [YouTube](https://youtu.be/agC4wXxjcIc) / [ニコニコ動画](https://nico.ms/sm2264780)
+- 人から嫌われるのが死ぬほどこわいだけなんだ / 神様うさぎ / 初音ミク / [YouTube](https://youtu.be/J-rkIXKiGqE) / [ニコニコ動画](https://nico.ms/sm38541170)
+
 ## 2022/3/18
 
 - ワンダーフォーゲル / くるり / [YouTube](https://youtu.be/XH7lpPCxbgE)
