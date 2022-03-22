@@ -10,6 +10,16 @@ description = "ここでは Ihoronir が適当に選んだ曲（おすすめの�
 
 多分1日2曲ずつ追加していくと思います。
 
+## 2022/3/23
+
+- 冬の銀河鉄道 - RINGING REMIX / かん(干瓢) / [ニコニコ動画](https://nico.ms/sm27840825)
+- Earnest blue light / Sibe / [YouTube](https://youtu.be/anbCVH9wPzc)
+
+## 2022/3/22
+
+- Step on the Sea / テルー / [YouTube](https://youtu.be/HoxCfYVIyOQ) / [ニコニコ動画](https://nico.ms/sm35458330)
+- parallel skydive / ああああ / [SoundCloud](https://soundcloud.com/ricora/parallel-skydive)
+
 ## 2022/3/21
 
 - やだ / シシド / 可不 / [YouTube](https://youtu.be/jPJZ83ecqxw) / [ニコニコ動画](https://nico.ms/sm40143883)
