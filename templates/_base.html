@@ -98,6 +98,7 @@
 					</li>
 				</ul>
 			</nav>
+			{% if config.mode == "Serve" %}
 			<div class="base_header_ad_1">
 				<div>広告</div>
 				<div style="background: #333; width:300px; height:600px; margin: auto; padding: 40px 0; font-size: 32px; color: #777;">広告募集中</div>
@@ -106,6 +107,7 @@
 				<div>広告</div>
 				<div style="background: #333; width:160px; height:600px; margin: auto; padding: 40px 0; font-size: 32px; color: #777;">広告募集中</div>
 			</div>
+			{% endif %}
 		</header>
 
 		<nav class="base_breadcrumb">
