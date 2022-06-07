@@ -10,6 +10,11 @@ description = "ここでは Ihoronir が適当に選んだ曲（おすすめの�
 
 多分1日2曲ずつ追加していくと思います。
 
+## 2022/4/18
+
+- マーシャル・マキシマイザー / 柊マグネタイト / [YouTube](https://youtu.be/jMKPYg0uhCI) / [ニコニコ動画](https://nico.ms/sm39217773)
+- QUEEN / 風原 / 夏色花梨 / [YouTube](https://youtu.be/hN3aC-Bi0rY) / [ニコニコ動画](https://nico.ms/sm40306367)
+
 ## 2022/4/7
 
 - KING / Kanaria / GUMI / [YouTube](https://youtu.be/cm-l2h6GB8Q) / [ニコニコ動画](https://nico.ms/sm37287661)
